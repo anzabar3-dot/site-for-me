@@ -1,19 +1,17 @@
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
 
-.ag, .ag * { box-sizing: border-box; margin: 0; padding: 0; }
+.lw, .lw * { box-sizing: border-box; margin: 0; padding: 0; }
 
-.ag {
-  --bg:     #F7F4EE;   /* тёплый кремовый */
-  --bg-2:   #FFFFFF;
-  --ink:    #15140F;   /* графит */
-  --ink-2:  #2A2820;
-  --mute:   #6E685C;   /* тёплый серый */
-  --line:   #E6E1D6;
-  --acc:    #14624F;   /* изумруд */
-  --acc-d:  #0E4C3D;
-  --acc-soft: rgba(20,98,79,0.08);
-  --sand:   #EFEADD;
+.lw {
+  --ink:   #0F0F0E;
+  --ink-2: #1C1C1A;
+  --bg:    #FFFFFF;
+  --band:  #F2F1ED;
+  --line:  #E4E2DC;
+  --mute:  #6E6C66;
+  --acc:   #0E7C66;   /* сдержанный teal-акцент для ссылок/иконок */
+  --acc-d: #0A5E4D;
 
   width: 100%;
   background: var(--bg);
@@ -22,461 +20,472 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  line-height: 1.55;
+  line-height: 1.6;
   position: relative;
   overflow-x: hidden;
 }
 
-.ag .wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+.lw .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-/* ── typography ── */
-.ag .display {
-  font-family: 'Fraunces', Georgia, serif;
-  font-weight: 500; letter-spacing: -0.02em; line-height: 1.04; color: var(--ink);
-  text-wrap: balance;
+/* headings */
+.lw .h { font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.05; color: var(--ink); text-wrap: balance; }
+.lw .h em { font-style: normal; color: var(--acc); }
+.lw .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--acc); margin-bottom: 18px; display: inline-block; }
+.lw .lead { font-size: 16.5px; color: var(--mute); line-height: 1.65; text-wrap: pretty; }
+
+/* buttons */
+.lw .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  border-radius: 7px; padding: 16px 26px; cursor: pointer; border: 1.5px solid var(--ink);
+  text-decoration: none; transition: transform .2s, background .2s, color .2s, box-shadow .25s;
 }
-.ag .display em { font-style: italic; color: var(--acc); }
-.ag .kicker {
-  display: inline-flex; align-items: center; gap: 9px;
-  font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--acc); margin-bottom: 18px;
-}
-.ag .kicker::before { content: ''; width: 22px; height: 1.5px; background: var(--acc); }
-.ag .lead { font-size: 17px; color: var(--mute); line-height: 1.6; text-wrap: pretty; }
+.lw .btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.lw .btn-solid { background: var(--ink); color: #fff !important; }
+.lw .btn-solid:hover { background: var(--ink-2); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(15,15,14,.22); }
+.lw .btn-out { background: transparent; color: var(--ink) !important; }
+.lw .btn-out:hover { background: var(--ink); color: #fff !important; transform: translateY(-2px); }
+.lw .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
-/* ── buttons ── */
-.ag .btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
-  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
-  border-radius: 12px; padding: 15px 24px; cursor: pointer; border: 1.5px solid transparent;
-  text-decoration: none; transition: transform .2s, background .2s, color .2s, border-color .2s, box-shadow .25s;
-  white-space: nowrap;
-}
-.ag .btn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.ag .btn-primary { background: var(--acc); color: #fff !important; box-shadow: 0 8px 24px rgba(20,98,79,.20); }
-.ag .btn-primary:hover { background: var(--acc-d); transform: translateY(-2px); box-shadow: 0 14px 32px rgba(20,98,79,.28); }
-.ag .btn-ghost { background: transparent; color: var(--ink) !important; border-color: var(--ink); }
-.ag .btn-ghost:hover { background: var(--ink); color: #fff !important; transform: translateY(-2px); }
-.ag .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+/* header */
+.lw .hd { border-bottom: 1px solid var(--line); background: var(--bg); }
+.lw .hd-in { max-width: 1180px; margin: 0 auto; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.lw .logo { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+.lw .logo sup { font-size: 9px; vertical-align: super; color: var(--mute); }
+.lw .nav { display: none; gap: 30px; }
+.lw .nav a { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink) !important; text-decoration: none; transition: color .2s; }
+.lw .nav a:hover { color: var(--acc) !important; }
+.lw .hd .btn { padding: 12px 20px; }
 
-/* ── header ── */
-.ag .hd { border-bottom: 1px solid var(--line); }
-.ag .hd-in { max-width: 1120px; margin: 0 auto; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.ag .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; color: var(--ink); }
-.ag .brand .mk { width: 26px; height: 26px; border-radius: 50%; background: var(--acc); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-family: 'Fraunces', serif; font-size: 15px; }
-.ag .hd .btn { padding: 11px 18px; font-size: 14px; }
+/* photo placeholder */
+.lw .ph { position: relative; background:
+    repeating-linear-gradient(135deg, #ECEAE4 0 2px, transparent 2px 16px), linear-gradient(135deg, #E9E7E1, #F4F3EF);
+  border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; min-height: 320px; }
+.lw .ph .ph-in { display: flex; flex-direction: column; align-items: center; gap: 10px; color: #A9A69D; }
+.lw .ph svg { width: 46px; height: 46px; stroke: #B6B3AA; stroke-width: 1.4; fill: none; }
+.lw .ph span { font-size: 11.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
 
-/* ── hero ── */
-.ag .hero { padding: 64px 0 56px; }
-.ag .hero-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
-.ag h1.display { font-size: clamp(38px, 8.6vw, 72px); margin-bottom: 22px; }
-.ag .hero .lead { max-width: 520px; margin-bottom: 30px; font-size: 18px; }
-.ag .hero-cta { margin-bottom: 26px; }
-.ag .meta { display: flex; flex-wrap: wrap; gap: 8px 10px; }
-.ag .meta span {
-  font-size: 12.5px; color: var(--mute); border: 1px solid var(--line);
-  border-radius: 100px; padding: 6px 13px; background: var(--bg-2);
-}
+/* hero */
+.lw .hero { padding: 56px 0 64px; }
+.lw .hero-grid { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: center; }
+.lw .hero h1 { font-size: clamp(36px, 8vw, 66px); font-weight: 900; margin-bottom: 22px; }
+.lw .hero .lead { max-width: 460px; margin-bottom: 30px; font-size: 17px; }
+.lw .hero .ph { min-height: 380px; }
 
-/* hero promise card (вместо фото) */
-.ag .promise {
-  background: var(--bg-2); border: 1px solid var(--line); border-radius: 22px;
-  padding: 30px; box-shadow: 0 30px 70px rgba(21,20,15,.07);
-}
-.ag .promise-top { display: flex; align-items: baseline; gap: 12px; padding-bottom: 22px; border-bottom: 1px solid var(--line); margin-bottom: 22px; }
-.ag .promise-num { font-family: 'Fraunces', serif; font-weight: 500; font-size: 64px; line-height: .9; color: var(--acc); letter-spacing: -0.03em; }
-.ag .promise-cap { font-size: 14px; color: var(--mute); line-height: 1.4; }
-.ag .promise-cap b { display: block; color: var(--ink); font-size: 15px; font-weight: 600; }
-.ag .arow { display: flex; align-items: center; gap: 12px; padding: 11px 0; }
-.ag .arow + .arow { border-top: 1px dashed var(--line); }
-.ag .arow .dot { width: 30px; height: 30px; border-radius: 9px; background: var(--acc-soft); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.ag .arow .dot svg { width: 15px; height: 15px; stroke: var(--acc); stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.ag .arow .t { font-size: 14.5px; font-weight: 500; color: var(--ink); }
-.ag .arow .s { font-size: 12.5px; color: var(--mute); }
-.ag .arow .meta-r { margin-left: auto; font-size: 11px; font-weight: 600; color: var(--acc); background: var(--acc-soft); padding: 4px 9px; border-radius: 100px; }
+/* section shell */
+.lw .sec { padding: 72px 0; }
+.lw .sec.band { background: var(--band); }
+.lw .sec-head { max-width: 760px; }
+.lw .sec-head.center { margin: 0 auto; text-align: center; }
+.lw .sec-title { font-size: clamp(27px, 4.4vw, 44px); }
+.lw .sec-head .lead { margin-top: 16px; }
 
-/* ── section shell ── */
-.ag .sec { padding: 72px 0; border-top: 1px solid var(--line); }
-.ag .sec.paper { background: var(--bg-2); }
-.ag .sec-head { max-width: 720px; margin-bottom: 14px; }
-.ag .sec-title { font-size: clamp(28px, 4.6vw, 44px); }
-.ag .sec-head .lead { margin-top: 14px; }
+/* niche strip */
+.lw .niche { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
+.lw .niche h3 { font-family: 'Archivo', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 17px; letter-spacing: 0.01em; line-height: 1.3; max-width: 320px; }
+.lw .niche-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.lw .niche-tags span { font-size: 13px; font-weight: 600; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 100px; padding: 9px 16px; }
 
-/* ── pains ── */
-.ag .grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 38px; }
-.ag .pain {
-  background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 22px 22px 22px 24px;
-  position: relative; transition: transform .2s, box-shadow .25s, border-color .2s;
-}
-.ag .sec.paper .pain { background: var(--bg); }
-.ag .pain::before { content: ''; position: absolute; left: 0; top: 20px; bottom: 20px; width: 3px; border-radius: 0 3px 3px 0; background: var(--acc); }
-.ag .pain:hover { transform: translateY(-3px); box-shadow: 0 16px 38px rgba(21,20,15,.07); border-color: rgba(20,98,79,.3); }
-.ag .pain h3 { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
-.ag .pain p { font-size: 13.5px; color: var(--mute); line-height: 1.5; }
+/* feature cards (practice areas) */
+.lw .cards { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 44px; }
+.lw .fcard { background: var(--band); border: 1px solid var(--line); border-radius: 14px; padding: 30px 26px; transition: transform .25s, box-shadow .3s; }
+.lw .sec.band .fcard { background: var(--bg); }
+.lw .fcard:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(15,15,14,.10); }
+.lw .sq { width: 50px; height: 50px; border-radius: 12px; background: var(--ink); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.lw .sq svg { width: 22px; height: 22px; stroke: #fff; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.lw .fcard h3 { font-family: 'Archivo', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 17px; letter-spacing: 0.005em; margin-bottom: 10px; }
+.lw .fcard p { font-size: 14.5px; color: var(--mute); line-height: 1.6; }
 
-/* ── services / solution ── */
-.ag .card {
-  background: var(--bg-2); border: 1px solid var(--line); border-radius: 20px; padding: 30px 28px;
-  transition: transform .25s, box-shadow .3s, border-color .25s;
-}
-.ag .sec.paper .card { background: var(--bg); }
-.ag .card:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(21,20,15,.09); border-color: rgba(20,98,79,.28); }
-.ag .card .ic { width: 50px; height: 50px; border-radius: 14px; background: var(--acc-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
-.ag .card .ic svg { width: 24px; height: 24px; stroke: var(--acc); stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.ag .card h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: -0.01em; margin-bottom: 9px; }
-.ag .card p { font-size: 14.5px; color: var(--mute); line-height: 1.6; }
+/* split feature */
+.lw .split { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: center; }
+.lw .split .h { font-size: clamp(26px, 4.2vw, 42px); margin-bottom: 18px; }
+.lw .split .lead { margin-bottom: 26px; }
+.lw .split.rev .ph { order: -1; }
 
-/* ── process ── */
-.ag .steps { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 38px; }
-.ag .step { display: grid; grid-template-columns: auto 1fr; gap: 22px; padding: 26px 0; border-top: 1px solid var(--line); align-items: start; }
-.ag .step:last-child { border-bottom: 1px solid var(--line); }
-.ag .step-n { font-family: 'Fraunces', serif; font-weight: 500; font-size: 40px; line-height: 1; color: var(--acc); letter-spacing: -0.02em; min-width: 64px; }
-.ag .step h3 { font-size: 19px; font-weight: 600; margin-bottom: 6px; }
-.ag .step p { font-size: 15px; color: var(--mute); line-height: 1.6; max-width: 620px; }
+/* columns with links */
+.lw .cols { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 44px; }
+.lw .col { padding: 28px 0; border-top: 1px solid var(--line); }
+.lw .col:last-child { border-bottom: 1px solid var(--line); }
+.lw .col .sq { width: 46px; height: 46px; margin-bottom: 16px; }
+.lw .col h3 { font-family: 'Archivo', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 16px; margin-bottom: 8px; }
+.lw .col p { font-size: 14px; color: var(--mute); line-height: 1.6; margin-bottom: 14px; }
+.lw .col a { font-size: 13px; font-weight: 600; color: var(--acc) !important; text-decoration: none; display: inline-flex; align-items: center; gap: 7px; }
+.lw .col a svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; }
 
-/* ── results (dark band) ── */
-.ag .band { background: var(--ink); color: var(--bg); border-top: none; }
-.ag .band .sec-title, .ag .band .display { color: var(--bg); }
-.ag .band .lead { color: rgba(247,244,238,.7); }
-.ag .res { display: grid; grid-template-columns: 1fr; gap: 1px; margin-top: 38px; background: rgba(247,244,238,.14); border: 1px solid rgba(247,244,238,.14); border-radius: 18px; overflow: hidden; }
-.ag .res-i { background: var(--ink); padding: 24px 24px; display: flex; gap: 14px; align-items: flex-start; }
-.ag .res-i .ck { width: 24px; height: 24px; border-radius: 50%; background: var(--acc); flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
-.ag .res-i .ck svg { width: 13px; height: 13px; stroke: #fff; stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.ag .res-i p { font-size: 15.5px; color: var(--bg); line-height: 1.5; }
-.ag .res-i p b { font-weight: 600; }
+/* steps */
+.lw .steps { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 44px; }
+.lw .step { display: grid; grid-template-columns: auto 1fr; gap: 22px; padding: 26px 0; border-top: 1px solid var(--line); }
+.lw .step:last-child { border-bottom: 1px solid var(--line); }
+.lw .step-n { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 28px; color: var(--acc); min-width: 56px; }
+.lw .step h3 { font-family: 'Archivo', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 17px; margin-bottom: 6px; }
+.lw .step p { font-size: 14.5px; color: var(--mute); line-height: 1.6; max-width: 640px; }
 
-/* ── objections (accordion) ── */
-.ag .faq { margin-top: 38px; }
-.ag details { border: 1px solid var(--line); border-radius: 14px; background: var(--bg-2); padding: 0 22px; margin-bottom: 12px; transition: border-color .2s, box-shadow .25s; }
-.ag .sec.paper details { background: var(--bg); }
-.ag details[open] { border-color: rgba(20,98,79,.32); box-shadow: 0 14px 34px rgba(21,20,15,.06); }
-.ag summary { list-style: none; cursor: pointer; padding: 19px 42px 19px 0; font-size: 16.5px; font-weight: 600; color: var(--ink); position: relative; }
-.ag summary::-webkit-details-marker { display: none; }
-.ag summary::after { content: '+'; position: absolute; right: 2px; top: 50%; transform: translateY(-50%); font-size: 24px; font-weight: 400; color: var(--acc); }
-.ag details[open] summary::after { content: '–'; }
-.ag .faq-a { padding: 0 0 20px; font-size: 15px; color: var(--mute); line-height: 1.65; max-width: 760px; }
+/* testimonials */
+.lw .tgrid { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 40px; }
+.lw .tcard { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 28px 24px; }
+.lw .stars { color: var(--acc); font-size: 14px; letter-spacing: 3px; margin-bottom: 14px; }
+.lw .tcard p { font-size: 15px; color: var(--ink-2); line-height: 1.6; margin-bottom: 18px; }
+.lw .tcard .who { display: flex; align-items: center; gap: 12px; }
+.lw .tcard .av { width: 40px; height: 40px; border-radius: 50%; background: var(--band); border: 1px solid var(--line); }
+.lw .tcard .who b { font-size: 13.5px; font-weight: 600; display: block; }
+.lw .tcard .who span { font-size: 12px; color: var(--mute); }
+.lw .ph-note { font-size: 11px; color: #B6B3AA; margin-top: 18px; letter-spacing: 0.02em; }
 
-/* ── CTA + form ── */
-.ag .cta-grid { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: start; }
-.ag .form-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: 22px; padding: 30px 26px; box-shadow: 0 30px 70px rgba(21,20,15,.08); }
-.ag .form-card h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 24px; margin-bottom: 6px; }
-.ag .form-card .sub { font-size: 14px; color: var(--mute); margin-bottom: 20px; }
-.ag .fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px; }
-.ag .field input, .ag .field textarea {
-  width: 100%; background: var(--bg); border: 1.5px solid var(--line); border-radius: 12px;
-  padding: 14px 16px; font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink);
-  outline: none; transition: border-color .2s, box-shadow .2s; -webkit-appearance: none; resize: none;
-}
-.ag .field input::placeholder, .ag .field textarea::placeholder { color: #A8A294; }
-.ag .field input:focus, .ag .field textarea:focus { border-color: var(--acc); box-shadow: 0 0 0 3px var(--acc-soft); background: var(--bg-2); }
-.ag .field.invalid input, .ag .field.invalid textarea { border-color: #C0492B; box-shadow: 0 0 0 3px rgba(192,73,43,.1); }
-.ag .field-err { font-size: 11.5px; color: #C0492B; margin-top: 4px; display: none; font-weight: 500; }
-.ag .field.invalid .field-err { display: block; }
-.ag .submit { width: 100%; background: var(--acc); color: #fff; border: none; border-radius: 12px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-size: 15.5px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 10px 26px rgba(20,98,79,.22); transition: background .2s, transform .2s, box-shadow .25s; }
-.ag .submit:hover { background: var(--acc-d); transform: translateY(-2px); }
-.ag .submit svg { width: 17px; height: 17px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.ag .consent { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; cursor: pointer; }
-.ag .consent input { margin-top: 3px; width: 15px; height: 15px; flex-shrink: 0; accent-color: var(--acc); }
-.ag .consent span { font-size: 11.5px; color: var(--mute); line-height: 1.5; }
-.ag .form-micro { text-align: center; font-size: 11.5px; color: #A8A294; margin-top: 12px; }
-.ag .form-success { display: none; flex-direction: column; align-items: center; text-align: center; padding: 24px 0; gap: 12px; }
-.ag .form-success .ck { width: 52px; height: 52px; border-radius: 50%; background: var(--acc-soft); display: flex; align-items: center; justify-content: center; }
-.ag .form-success .ck svg { width: 24px; height: 24px; stroke: var(--acc); stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.ag .form-success h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 23px; }
-.ag .form-success p { font-size: 14px; color: var(--mute); max-width: 280px; line-height: 1.6; }
-.ag .cta-side h2 { margin-bottom: 18px; }
-.ag .cta-points { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
-.ag .cta-points li { list-style: none; display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--ink); }
-.ag .cta-points .ck { width: 22px; height: 22px; border-radius: 50%; background: var(--acc); flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
-.ag .cta-points .ck svg { width: 12px; height: 12px; stroke: #fff; stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+/* CTA band */
+.lw .cta { text-align: center; }
+.lw .cta .h { font-size: clamp(28px, 4.6vw, 46px); margin-bottom: 16px; }
+.lw .cta .lead { max-width: 560px; margin: 0 auto 28px; }
 
-/* ── footer ── */
-.ag .ft { background: var(--ink); color: rgba(247,244,238,.7); padding: 40px 0; }
-.ag .ft-in { max-width: 1120px; margin: 0 auto; padding: 0 22px; display: flex; flex-direction: column; gap: 18px; }
-.ag .ft .brand { color: var(--bg); }
-.ag .ft .brand .mk { background: var(--acc); }
-.ag .ft-c { font-size: 13.5px; line-height: 1.8; }
-.ag .ft-c a { color: rgba(247,244,238,.85) !important; text-decoration: none; }
-.ag .ft-note { font-size: 12px; color: rgba(247,244,238,.45); }
+/* form */
+.lw .form-wrap { max-width: 540px; margin: 40px auto 0; background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 30px 26px; box-shadow: 0 24px 60px rgba(15,15,14,.08); }
+.lw .form-wrap h3 { font-family: 'Archivo', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 19px; margin-bottom: 6px; text-align: left; }
+.lw .form-wrap .sub { font-size: 13.5px; color: var(--mute); margin-bottom: 20px; text-align: left; }
+.lw .fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px; }
+.lw .field input { width: 100%; background: var(--band); border: 1.5px solid var(--line); border-radius: 10px; padding: 14px 16px; font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink); outline: none; transition: border-color .2s, box-shadow .2s; -webkit-appearance: none; }
+.lw .field input::placeholder { color: #A8A59C; }
+.lw .field input:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(15,15,14,.08); background: var(--bg); }
+.lw .field.invalid input { border-color: #C0492B; box-shadow: 0 0 0 3px rgba(192,73,43,.1); }
+.lw .field-err { font-size: 11.5px; color: #C0492B; margin-top: 4px; display: none; font-weight: 500; text-align: left; }
+.lw .field.invalid .field-err { display: block; }
+.lw .submit { width: 100%; background: var(--ink); color: #fff; border: none; border-radius: 10px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background .2s, transform .2s; }
+.lw .submit:hover { background: var(--ink-2); transform: translateY(-2px); }
+.lw .submit svg { width: 15px; height: 15px; stroke: currentColor; stroke-width: 2; fill: none; }
+.lw .consent { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; cursor: pointer; text-align: left; }
+.lw .consent input { margin-top: 3px; width: 15px; height: 15px; flex-shrink: 0; accent-color: var(--ink); }
+.lw .consent span { font-size: 11.5px; color: var(--mute); line-height: 1.5; }
+.lw .form-micro { text-align: center; font-size: 11.5px; color: #A8A59C; margin-top: 12px; }
+.lw .form-ok { display: none; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 20px 0; }
+.lw .form-ok .ck { width: 52px; height: 52px; border-radius: 50%; background: var(--ink); display: flex; align-items: center; justify-content: center; }
+.lw .form-ok .ck svg { width: 24px; height: 24px; stroke: #fff; stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.lw .form-ok h3 { text-align: center; }
+.lw .form-ok p { font-size: 14px; color: var(--mute); max-width: 300px; }
 
-/* ════ TABLET ≥ 640 ════ */
-@media (min-width: 640px) {
-  .ag .grid { grid-template-columns: 1fr 1fr; }
-  .ag .res { grid-template-columns: 1fr 1fr; }
+/* footer */
+.lw .ft { background: var(--ink); color: rgba(255,255,255,.65); padding: 56px 0 36px; }
+.lw .ft-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+.lw .ft .logo { color: #fff; display: inline-block; margin-bottom: 16px; }
+.lw .ft-c { font-size: 14px; line-height: 1.9; }
+.lw .ft-c a { color: rgba(255,255,255,.85) !important; text-decoration: none; }
+.lw .ft h4 { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; margin-bottom: 14px; }
+.lw .ft-links a { display: block; font-size: 14px; color: rgba(255,255,255,.65) !important; text-decoration: none; padding: 5px 0; }
+.lw .ft-links a:hover { color: #fff !important; }
+.lw .ft-bottom { border-top: 1px solid rgba(255,255,255,.14); margin-top: 36px; padding-top: 24px; font-size: 12.5px; color: rgba(255,255,255,.45); }
+
+/* ════ TABLET ≥ 720 ════ */
+@media (min-width: 720px) {
+  .lw .cards { grid-template-columns: repeat(3, 1fr); }
+  .lw .cols { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .lw .col { border-top: none; border-bottom: none; padding: 0; }
+  .lw .tgrid { grid-template-columns: repeat(3, 1fr); }
+  .lw .niche { grid-template-columns: auto 1fr; gap: 40px; }
+  .lw .ft-grid { grid-template-columns: 1.4fr 1fr 1fr; }
 }
 
-/* ════ DESKTOP ≥ 920 ════ */
-@media (min-width: 920px) {
-  .ag .hero { padding: 92px 0 84px; }
-  .ag .hero-grid { grid-template-columns: 1.08fr 0.92fr; gap: 56px; }
-  .ag .sec { padding: 100px 0; }
-  .ag .grid.g3 { grid-template-columns: repeat(3, 1fr); }
-  .ag .res { grid-template-columns: repeat(3, 1fr); }
-  .ag .step { grid-template-columns: 96px 1fr; gap: 30px; }
-  .ag .step-n { font-size: 48px; }
-  .ag .cta-grid { grid-template-columns: 0.95fr 1.05fr; gap: 52px; }
-  .ag .ft-in { flex-direction: row; align-items: center; justify-content: space-between; }
+/* ════ DESKTOP ≥ 980 ════ */
+@media (min-width: 980px) {
+  .lw .nav { display: flex; }
+  .lw .hero { padding: 80px 0 90px; }
+  .lw .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 56px; }
+  .lw .sec { padding: 96px 0; }
+  .lw .split { grid-template-columns: 1fr 1fr; gap: 56px; }
+  .lw .split .ph { min-height: 420px; }
+  .lw .steps { grid-template-columns: 1fr 1fr; gap: 0 56px; }
 }
 </style>
 
-<div class="ag" id="ag-root">
+<div class="lw" id="lw-root">
 
-  <!-- ── HEADER ── -->
+  <!-- HEADER -->
   <header class="hd">
     <div class="hd-in">
-      <a href="#ag-lead" class="brand ag-scroll"><span class="mk">A</span>Ваш бренд</a>
-      <a href="#ag-lead" class="btn btn-primary ag-scroll">Получить разбор</a>
+      <a href="#lw-top" class="logo lw-scroll">ВАШ БРЕНД<sup>™</sup></a>
+      <nav class="nav">
+        <a href="#what" class="lw-scroll">Услуги</a>
+        <a href="#how" class="lw-scroll">Как работает</a>
+        <a href="#results" class="lw-scroll">Результаты</a>
+        <a href="#lead" class="lw-scroll">Контакты</a>
+      </nav>
+      <a href="#lead" class="btn btn-solid lw-scroll">Получить разбор</a>
     </div>
   </header>
 
-  <!-- ── HERO ── -->
-  <section class="hero">
+  <!-- HERO -->
+  <section class="hero" id="lw-top">
     <div class="wrap">
       <div class="hero-grid">
-
         <div>
-          <span class="kicker">ИИ-агент для бьюти-юристов</span>
-          <h1 class="display">Освобождаю бьюти-юристу <em>до 80% времени</em></h1>
-          <p class="lead">Автоматизирую рутинные процессы с помощью ИИ — заявки, переписки и работу с клиентами. Первые результаты уже через 2 месяца.</p>
-          <div class="hero-cta">
-            <div class="btn-row">
-              <a href="#ag-lead" class="btn btn-primary ag-scroll">Получить разбор
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              <a href="#how" class="btn btn-ghost ag-scroll">Как это работает</a>
-            </div>
-          </div>
-          <div class="meta">
-            <span>Премиальная упаковка</span>
-            <span>Автоматизация на ИИ</span>
-            <span>Первые результаты — 2 месяца</span>
+          <span class="eyebrow">ИИ-автоматизация для юристов</span>
+          <h1 class="h">Освобождаю бьюти-юристу <em>до 80%</em> времени</h1>
+          <p class="lead">Автоматизирую рутинные процессы с помощью ИИ — заявки, переписки и работу с клиентами. Первые результаты — уже через 2 месяца.</p>
+          <div class="btn-row">
+            <a href="#lead" class="btn btn-solid lw-scroll">Получить разбор
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#how" class="btn btn-out lw-scroll">Как это работает</a>
           </div>
         </div>
-
-        <div class="promise">
-          <div class="promise-top">
-            <div class="promise-num">до&nbsp;80%</div>
-            <div class="promise-cap"><b>свободного времени</b>без рутинных процессов</div>
-          </div>
-          <div class="arow">
-            <span class="dot"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H7l-3 3z"/></svg></span>
-            <div><div class="t">Заявки</div><div class="s">мгновенный ответ 24/7</div></div>
-            <span class="meta-r">авто</span>
-          </div>
-          <div class="arow">
-            <span class="dot"><svg viewBox="0 0 24 24"><path d="M8 10h8M8 14h5"/><path d="M21 12a8 8 0 0 1-11.3 7.3L3 21l1.7-6.7A8 8 0 1 1 21 12z"/></svg></span>
-            <div><div class="t">Переписки</div><div class="s">типовые вопросы — на агенте</div></div>
-            <span class="meta-r">авто</span>
-          </div>
-          <div class="arow">
-            <span class="dot"><svg viewBox="0 0 24 24"><path d="M16 11a4 4 0 1 0-8 0"/><path d="M3 20a7 7 0 0 1 18 0"/></svg></span>
-            <div><div class="t">Клиенты</div><div class="s">не «сливаются», ведутся системно</div></div>
-            <span class="meta-r">авто</span>
+        <div class="ph">
+          <div class="ph-in">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <span>Фото — добавим позже</span>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ── ПАИНЫ ── -->
-  <section class="sec paper">
+  <!-- NICHE STRIP -->
+  <section class="sec band" style="padding:44px 0;">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">Знакомо?</span>
-        <h2 class="display sec-title">Вы — сильный юрист, <em>но выглядите как ещё один</em></h2>
-      </div>
-      <div class="grid g3">
-        <div class="pain"><h3>Нет стабильного потока клиентов</h3><p>Обращения то есть, то нет — всё держится на сарафане и удаче.</p></div>
-        <div class="pain"><h3>Заявки теряются</h3><p>Не успеваете ответить вовремя — и клиент уходит к тому, кто ответил быстрее.</p></div>
-        <div class="pain"><h3>Всё вручную</h3><p>Переписки, ответы на одни и те же вопросы, рутина — съедают часы каждый день.</p></div>
-        <div class="pain"><h3>Сайт не вызывает доверия</h3><p>Упаковка слабее вашей экспертизы — и обесценивает дорогие услуги.</p></div>
-        <div class="pain"><h3>Нет времени на контент</h3><p>Вести соцсети некогда, а без этого нет входящих обращений.</p></div>
-        <div class="pain"><h3>Нет ощущения бренда</h3><p>Клиент не считывает уровень — сложно поднять чек и выделиться.</p></div>
+      <div class="niche">
+        <h3>Работаю с юристами в узких нишах</h3>
+        <div class="niche-tags">
+          <span>Бьюти-юристы</span>
+          <span>Образование и онлайн-школы</span>
+          <span>Медицинские</span>
+          <span>Эксперты и онлайн-бизнес</span>
+          <span>Семейные · premium</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ── РЕШЕНИЕ ── -->
-  <section class="sec">
+  <!-- WHAT I AUTOMATE -->
+  <section class="sec" id="what">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">Что я автоматизирую</span>
+        <h2 class="h sec-title">Рутину забирает ИИ-агент</h2>
+        <p class="lead">Три процесса, которые отнимают у юриста больше всего времени — и которые лучше доверить системе.</p>
+      </div>
+      <div class="cards">
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></div>
+          <h3>Заявки</h3>
+          <p>Мгновенный ответ 24/7, квалификация обращения и фиксация — ни один клиент не теряется, пока вы заняты делами.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.3 7.3L3 21l1.7-6.7A8 8 0 1 1 21 12z"/><path d="M8 11h8M8 14h5"/></svg></div>
+          <h3>Переписки</h3>
+          <p>Типовые вопросы и сопровождение клиента ведёт ИИ-агент в вашем тоне — без однотипной ручной переписки.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M4 7V5h16v2M9 21h6M12 5v16"/></svg></div>
+          <h3>Рутинные процессы</h3>
+          <p>Напоминания, типовые документы и повторяющиеся действия — на автомате. Меньше операционки, больше практики.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPLIT FEATURE -->
+  <section class="sec band">
+    <div class="wrap">
+      <div class="split">
+        <div class="ph">
+          <div class="ph-in">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <span>Фото — добавим позже</span>
+          </div>
+        </div>
+        <div>
+          <span class="eyebrow">Решение</span>
+          <h2 class="h">Понятная система вместо ручного труда</h2>
+          <p class="lead">Совмещаю две вещи, которых обычно не хватает юристу: премиальную упаковку, в которой вы выглядите дорого, и автоматизацию, которая сама собирает и ведёт клиентов. Не «ещё один сайт», а работающая система привлечения.</p>
+          <a href="#how" class="btn btn-solid lw-scroll">Как это работает</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET (columns) -->
+  <section class="sec" id="results">
     <div class="wrap">
       <div class="sec-head">
-        <span class="kicker">Решение</span>
-        <h2 class="display sec-title">Упаковка <em>+</em> автоматизация — как система</h2>
-        <p class="lead">Совмещаю две вещи, которых обычно не хватает юристу: дорогой digital-образ и систему, которая сама собирает и ведёт заявки.</p>
+        <span class="eyebrow">Что вы получаете</span>
+        <h2 class="h sec-title">Вы растёте, а не выгораете</h2>
       </div>
-      <div class="grid g3">
-        <div class="card">
-          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M7 14h6"/></svg></div>
-          <h3>Digital-бренд</h3>
-          <p>Премиальный сайт и единый стиль, в котором вы выглядите дорого и экспертно — под уровень ваших услуг.</p>
-        </div>
-        <div class="card">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4z"/><path d="M5 21a7 7 0 0 1 14 0"/><circle cx="19" cy="6" r="2"/></svg></div>
-          <h3>ИИ-агент заявок и переписок</h3>
-          <p>Отвечает мгновенно 24/7, квалифицирует обращения и не даёт клиентам «сливаться», пока вы заняты делами.</p>
-        </div>
-        <div class="card">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 3v6h6"/><path d="M12 8v4l3 2"/></svg></div>
+      <div class="cols">
+        <div class="col">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 3v6h6"/><path d="M12 8v4l3 2"/></svg></div>
           <h3>Поток заявок</h3>
-          <p>Система привлекает обращения без ежедневного ведения соцсетей — заявки приходят, даже когда вы не в эфире.</p>
+          <p>Предсказуемые обращения из интернета — без ежедневного ведения соцсетей.</p>
+          <a href="#lead" class="lw-scroll">Получить разбор <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="card">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7V5h16v2M9 21h6M12 5v16"/></svg></div>
-          <h3>Автоматизация работы</h3>
-          <p>Типовые переписки, напоминания и ответы — на автомате. Меньше рутины, больше времени на клиентов.</p>
+        <div class="col">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 20l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg></div>
+          <h3>Дорогой личный бренд</h3>
+          <p>Премиальная упаковка, которая выделяет вас среди юристов и позволяет поднять чек.</p>
+          <a href="#lead" class="lw-scroll">Получить разбор <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="card">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 20l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg></div>
-          <h3>Рост чека и позиция</h3>
-          <p>Сильный бренд выделяет вас среди юристов, повышает доверие — и позволяет поднять стоимость услуг.</p>
-        </div>
-        <div class="card">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-          <h3>Под ключ</h3>
-          <p>Настраиваю, подключаю и передаю готовое. Разбираться в технике самой не придётся.</p>
+        <div class="col">
+          <div class="sq"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>До 80% времени</h3>
+          <p>Рутина уходит на ИИ — освобождается время на клиентов, развитие и жизнь.</p>
+          <a href="#lead" class="lw-scroll">Получить разбор <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── ПРОЦЕСС ── -->
-  <section class="sec paper" id="how">
+  <!-- HOW IT WORKS (steps) -->
+  <section class="sec band" id="how">
     <div class="wrap">
       <div class="sec-head">
-        <span class="kicker">Как это работает</span>
-        <h2 class="display sec-title">Четыре шага <em>до системы</em></h2>
+        <span class="eyebrow">Как это работает</span>
+        <h2 class="h sec-title">Четыре шага до системы</h2>
       </div>
       <div class="steps">
-        <div class="step"><div class="step-n">01</div><div><h3>Разбор</h3><p>Изучаю вашу нишу, услуги, текущую упаковку и узкие места — где теряются клиенты и время.</p></div></div>
+        <div class="step"><div class="step-n">01</div><div><h3>Разбор</h3><p>Изучаю вашу нишу, услуги и текущую упаковку — где теряются клиенты и время.</p></div></div>
         <div class="step"><div class="step-n">02</div><div><h3>Упаковка</h3><p>Собираю премиальный сайт и единый digital-бренд под уровень ваших услуг.</p></div></div>
         <div class="step"><div class="step-n">03</div><div><h3>Автоматизация</h3><p>Подключаю ИИ-агента: заявки, переписки и работа с клиентами идут без ручного труда.</p></div></div>
-        <div class="step"><div class="step-n">04</div><div><h3>Запуск</h3><p>Вы получаете поток заявок и до 80% времени — без рутины. Первые результаты уже через 2 месяца.</p></div></div>
+        <div class="step"><div class="step-n">04</div><div><h3>Запуск</h3><p>Поток заявок и до 80% времени без рутины. Первые результаты — уже через 2 месяца.</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- ── РЕЗУЛЬТАТЫ (тёмная лента) ── -->
+  <!-- COMMITTED split -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="split rev">
+        <div>
+          <span class="eyebrow">Подход</span>
+          <h2 class="h">Помогаю юристу выглядеть дорого и работать меньше</h2>
+          <p class="lead">Узкая специализация, премиальная упаковка и автоматизация на ИИ — это и есть ваша сила на рынке, где почти никто не умеет в digital. Беру процесс под ключ: настраиваю, подключаю и передаю готовое.</p>
+          <a href="#lead" class="btn btn-solid lw-scroll">Получить разбор
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="ph">
+          <div class="ph-in">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <span>Фото — добавим позже</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS (placeholders) -->
   <section class="sec band">
     <div class="wrap">
       <div class="sec-head">
-        <span class="kicker" style="color:#7FD4BE">Что вы получите</span>
-        <h2 class="display sec-title">Результат, который видно</h2>
+        <span class="eyebrow">Отзывы</span>
+        <h2 class="h sec-title">Что говорят клиенты</h2>
       </div>
-      <div class="res">
-        <div class="res-i"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Клиенты из интернета</b> без ежедневного ведения соцсетей</p></div>
-        <div class="res-i"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Дорогой, экспертный образ</b> — и выше чек</p></div>
-        <div class="res-i"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Заявки не теряются</b> — ответ 24/7</p></div>
-        <div class="res-i"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Сильный личный бренд</b>, который выделяет</p></div>
-        <div class="res-i"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>До 80% свободного времени</b> — без рутины</p></div>
-        <div class="res-i"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Современный сайт</b>, которым не стыдно делиться</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── ВОЗРАЖЕНИЯ ── -->
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">Сомнения</span>
-        <h2 class="display sec-title">Честно отвечаю <em>на главные «но»</em></h2>
-      </div>
-      <div class="faq">
-        <details open><summary>«У меня уже есть сайт»</summary><div class="faq-a">Если он не приносит заявки и не вызывает доверия — это визитка, а не система. Усиливаем упаковку и подключаем автоматизацию, чтобы сайт начал работать на заявки.</div></details>
-        <details><summary>«Мне хватает сарафана»</summary><div class="faq-a">Сарафан нестабилен и не масштабируется. Мы добавляем предсказуемый поток обращений, не теряя текущих клиентов.</div></details>
-        <details><summary>«Это дорого»</summary><div class="faq-a">Освобождённые 5–10 часов в неделю и рост чека окупают вложение. На разборе считаем экономику под вашу практику — без абстракций.</div></details>
-        <details><summary>«Я не веду соцсети»</summary><div class="faq-a">Система собирает заявки без ежедневного контента — в этом и смысл автоматизации. Соцсети перестают быть обязательным условием.</div></details>
-        <details><summary>«Я не разбираюсь в технике»</summary><div class="faq-a">Делаю под ключ и передаю готовое. Разбираться в настройках не нужно — всё работает за вас.</div></details>
-        <details><summary>«Уже обжигалась с подрядчиками»</summary><div class="faq-a">Прозрачные этапы, понятный результат на каждом шаге и связь до запуска и после. Вы всегда видите, за что платите.</div></details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── CTA + ФОРМА ── -->
-  <section class="sec paper" id="ag-lead">
-    <div class="wrap">
-      <div class="cta-grid">
-        <div class="cta-side">
-          <span class="kicker">Бесплатно</span>
-          <h2 class="display sec-title">Разбор вашей упаковки <em>и план автоматизации</em></h2>
-          <p class="lead">Оставьте заявку — посмотрю вашу нишу и текущую упаковку, покажу, где теряются клиенты и время, и что автоматизировать в первую очередь.</p>
-          <ul class="cta-points">
-            <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Конкретный план под вашу практику</li>
-            <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Оценка, что окупится в первую очередь</li>
-            <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Без обязательств и давления</li>
-          </ul>
+      <div class="tgrid">
+        <div class="tcard">
+          <div class="stars">★★★★★</div>
+          <p>Здесь будет реальный отзыв клиента о результатах и совместной работе.</p>
+          <div class="who"><span class="av"></span><div><b>Имя клиента</b><span>бьюти-юрист</span></div></div>
         </div>
+        <div class="tcard">
+          <div class="stars">★★★★★</div>
+          <p>Здесь будет реальный отзыв клиента о результатах и совместной работе.</p>
+          <div class="who"><span class="av"></span><div><b>Имя клиента</b><span>юрист по онлайн-школам</span></div></div>
+        </div>
+        <div class="tcard">
+          <div class="stars">★★★★★</div>
+          <p>Здесь будет реальный отзыв клиента о результатах и совместной работе.</p>
+          <div class="who"><span class="av"></span><div><b>Имя клиента</b><span>медицинский юрист</span></div></div>
+        </div>
+      </div>
+      <div class="ph-note">Блок-плейсхолдер — заменим на реальные отзывы после первых кейсов.</div>
+    </div>
+  </section>
 
-        <div class="form-card" id="ag-form-wrap">
-          <div id="ag-form-body">
-            <h3>Получить разбор</h3>
-            <div class="sub">Отвечу в течение рабочего дня.</div>
-            <form id="ag-form" novalidate>
-              <div class="fields">
-                <div class="field" data-n="name">
-                  <input type="text" name="name" placeholder="Ваше имя" autocomplete="name">
-                  <div class="field-err">Введите имя (минимум 2 символа)</div>
-                </div>
-                <div class="field" data-n="contact">
-                  <input type="text" name="contact" placeholder="Телефон или Telegram" autocomplete="tel">
-                  <div class="field-err">Укажите контакт (минимум 5 символов)</div>
-                </div>
-                <div class="field" data-n="niche">
-                  <input type="text" name="niche" placeholder="Ваша ниша (необязательно)">
-                </div>
+  <!-- CTA + FORM -->
+  <section class="sec" id="lead">
+    <div class="wrap">
+      <div class="cta">
+        <span class="eyebrow">Бесплатно</span>
+        <h2 class="h">Получить персональный разбор</h2>
+        <p class="lead">Посмотрю вашу нишу и упаковку, покажу, где теряются клиенты и время, и что автоматизировать в первую очередь. Без обязательств.</p>
+      </div>
+
+      <div class="form-wrap" id="lw-form-wrap">
+        <div id="lw-form-body">
+          <h3>Оставить заявку</h3>
+          <div class="sub">Отвечу в течение рабочего дня.</div>
+          <form id="lw-form" novalidate>
+            <div class="fields">
+              <div class="field" data-n="name">
+                <input type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+                <div class="field-err">Введите имя (минимум 2 символа)</div>
               </div>
-              <label class="consent" id="ag-consent-wrap">
-                <input type="checkbox" id="ag-consent">
-                <span>Согласен(на) на обработку персональных данных и связь по указанным контактам</span>
-              </label>
-              <div class="field-err" id="ag-consent-err" style="margin:-6px 0 10px;">Необходимо ваше согласие</div>
-              <button type="submit" class="submit">Отправить заявку
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-            </form>
-            <div class="form-micro">Заявка придёт на почту и в Telegram</div>
-          </div>
-          <div class="form-success" id="ag-success">
-            <span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-            <h3>Заявка отправлена</h3>
-            <p>Спасибо! Свяжусь с вами в течение рабочего дня.</p>
-          </div>
+              <div class="field" data-n="contact">
+                <input type="text" name="contact" placeholder="Телефон или Telegram" autocomplete="tel">
+                <div class="field-err">Укажите контакт (минимум 5 символов)</div>
+              </div>
+              <div class="field" data-n="niche">
+                <input type="text" name="niche" placeholder="Ваша ниша (необязательно)">
+              </div>
+            </div>
+            <label class="consent" id="lw-consent-wrap">
+              <input type="checkbox" id="lw-consent">
+              <span>Согласен(на) на обработку персональных данных и связь по указанным контактам</span>
+            </label>
+            <div class="field-err" id="lw-consent-err" style="margin:-6px 0 10px;">Необходимо ваше согласие</div>
+            <button type="submit" class="submit">Отправить заявку
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </form>
+          <div class="form-micro">Заявка придёт на почту и в Telegram</div>
+        </div>
+        <div class="form-ok" id="lw-ok">
+          <span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <h3 class="h">Заявка отправлена</h3>
+          <p>Спасибо! Свяжусь с вами в течение рабочего дня.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── FOOTER ── -->
+  <!-- FOOTER -->
   <footer class="ft">
-    <div class="ft-in">
-      <div>
-        <div class="brand"><span class="mk">A</span>Ваш бренд</div>
-        <div class="ft-c">Упаковка и автоматизация для юристов в узких нишах</div>
+    <div class="wrap">
+      <div class="ft-grid">
+        <div>
+          <a href="#lw-top" class="logo lw-scroll">ВАШ БРЕНД<sup>™</sup></a>
+          <div class="ft-c">Упаковка и ИИ-автоматизация<br>для юристов в узких нишах</div>
+        </div>
+        <div>
+          <h4>Навигация</h4>
+          <div class="ft-links">
+            <a href="#what" class="lw-scroll">Услуги</a>
+            <a href="#how" class="lw-scroll">Как работает</a>
+            <a href="#results" class="lw-scroll">Результаты</a>
+            <a href="#lead" class="lw-scroll">Оставить заявку</a>
+          </div>
+        </div>
+        <div>
+          <h4>Контакты</h4>
+          <div class="ft-c">
+            <a href="mailto:hello@example.com">hello@example.com</a><br>
+            Telegram: @username<br>
+            <span style="color:rgba(255,255,255,.45)">(заменить на ваши)</span>
+          </div>
+        </div>
       </div>
-      <div class="ft-c">
-        <a href="#ag-lead" class="ag-scroll">Оставить заявку</a><br>
-        <span class="ft-note">© <span id="ag-year">2025</span> · Все права защищены</span>
-      </div>
+      <div class="ft-bottom">© <span id="lw-year">2025</span> · Все права защищены</div>
     </div>
   </footer>
 
-</div><!-- /ag-root -->
+</div><!-- /lw-root -->
 
 <script>
 (function () {
   /* ════════ НАСТРОЙКИ ════════ */
-  var EMAIL        = '';   // ← ваш email для заявок (mailto-доставка)
-  var TG_TOKEN     = '';   // ← токен Telegram-бота (только под заявки; будет виден в коде страницы)
-  var TG_CHAT_ID   = '';   // ← chat_id, куда падают заявки
-  var EMAIL_ENDPOINT = ''; // ← необяз.: URL формы-релея (напр. Formspree) для авто-письма без mailto
-  /* Пока поля пустые — форма показывает «Заявка отправлена» (демо). Заполните для реальной доставки. */
+  var EMAIL          = '';   // ← ваш email для заявок (mailto)
+  var TG_TOKEN       = '';   // ← токен Telegram-бота (виден в коде страницы; лучше отдельный бот)
+  var TG_CHAT_ID     = '';   // ← chat_id, куда падают заявки
+  var EMAIL_ENDPOINT = '';   // ← необяз.: URL формы-релея (Formspree) для авто-письма
+  /* Пока пусто — форма показывает «Заявка отправлена» (демо). */
   /* ═══════════════════════════ */
 
-  var root = document.getElementById('ag-root');
+  var root = document.getElementById('lw-root');
   if (!root) return;
+  try { document.getElementById('lw-year').textContent = String(new Date().getFullYear()); } catch (e) {}
 
-  try { document.getElementById('ag-year').textContent = String(new Date().getFullYear()); } catch (e) {}
-
-  /* плавный скролл по якорям */
-  root.querySelectorAll('.ag-scroll').forEach(function (a) {
+  root.querySelectorAll('.lw-scroll').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var id = (a.getAttribute('href') || '').replace('#', '');
       var t = id && document.getElementById(id);
@@ -486,22 +495,22 @@
     });
   });
 
-  var form = document.getElementById('ag-form');
+  var form = document.getElementById('lw-form');
   if (!form) return;
   function field(n) { return root.querySelector('.field[data-n="' + n + '"]'); }
   function setErr(n, on) { var f = field(n); if (f) f.classList.toggle('invalid', !!on); }
   ['name', 'contact'].forEach(function (n) {
     var f = field(n); if (!f) return;
-    var i = f.querySelector('input,textarea');
+    var i = f.querySelector('input');
     if (i) i.addEventListener('input', function () { setErr(n, false); });
   });
-  var consentErr = document.getElementById('ag-consent-err');
-  var cb = document.getElementById('ag-consent');
+  var consentErr = document.getElementById('lw-consent-err');
+  var cb = document.getElementById('lw-consent');
   if (cb) cb.addEventListener('change', function () { if (consentErr) consentErr.style.display = 'none'; });
 
-  function showSuccess() {
-    var b = document.getElementById('ag-form-body');
-    var s = document.getElementById('ag-success');
+  function showOk() {
+    var b = document.getElementById('lw-form-body');
+    var s = document.getElementById('lw-ok');
     if (b) b.style.display = 'none';
     if (s) s.style.display = 'flex';
   }
@@ -538,11 +547,10 @@
     if (!jobs.length && EMAIL) {
       window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Заявка с сайта') + '&body=' + encodeURIComponent(text);
     }
-
     if (jobs.length) {
-      Promise.all(jobs.map(function (p) { return p.catch(function () {}); })).then(showSuccess);
+      Promise.all(jobs.map(function (p) { return p.catch(function () {}); })).then(showOk);
     } else {
-      showSuccess();
+      showOk();
     }
   });
 })();
