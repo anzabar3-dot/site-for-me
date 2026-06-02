@@ -1,0 +1,19 @@
+# dependencies / build
+node_modules/
+dist/
+.output/
+.next/
+build/
+
+# env & secrets — НИКОГДА не коммитим
+.env
+.env.*
+!.env.example
+
+# vercel
+.vercel
+
+# os / editor
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,549 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
+
+.ag, .ag * { box-sizing: border-box; margin: 0; padding: 0; }
+
+.ag {
+  --bg:     #F7F4EE;   /* тёплый кремовый */
+  --bg-2:   #FFFFFF;
+  --ink:    #15140F;   /* графит */
+  --ink-2:  #2A2820;
+  --mute:   #6E685C;   /* тёплый серый */
+  --line:   #E6E1D6;
+  --acc:    #14624F;   /* изумруд */
+  --acc-d:  #0E4C3D;
+  --acc-soft: rgba(20,98,79,0.08);
+  --sand:   #EFEADD;
+
+  width: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  line-height: 1.55;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.ag .wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+
+/* ── typography ── */
+.ag .display {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500; letter-spacing: -0.02em; line-height: 1.04; color: var(--ink);
+  text-wrap: balance;
+}
+.ag .display em { font-style: italic; color: var(--acc); }
+.ag .kicker {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--acc); margin-bottom: 18px;
+}
+.ag .kicker::before { content: ''; width: 22px; height: 1.5px; background: var(--acc); }
+.ag .lead { font-size: 17px; color: var(--mute); line-height: 1.6; text-wrap: pretty; }
+
+/* ── buttons ── */
+.ag .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+  border-radius: 12px; padding: 15px 24px; cursor: pointer; border: 1.5px solid transparent;
+  text-decoration: none; transition: transform .2s, background .2s, color .2s, border-color .2s, box-shadow .25s;
+  white-space: nowrap;
+}
+.ag .btn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ag .btn-primary { background: var(--acc); color: #fff !important; box-shadow: 0 8px 24px rgba(20,98,79,.20); }
+.ag .btn-primary:hover { background: var(--acc-d); transform: translateY(-2px); box-shadow: 0 14px 32px rgba(20,98,79,.28); }
+.ag .btn-ghost { background: transparent; color: var(--ink) !important; border-color: var(--ink); }
+.ag .btn-ghost:hover { background: var(--ink); color: #fff !important; transform: translateY(-2px); }
+.ag .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ── header ── */
+.ag .hd { border-bottom: 1px solid var(--line); }
+.ag .hd-in { max-width: 1120px; margin: 0 auto; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.ag .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; color: var(--ink); }
+.ag .brand .mk { width: 26px; height: 26px; border-radius: 50%; background: var(--acc); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-family: 'Fraunces', serif; font-size: 15px; }
+.ag .hd .btn { padding: 11px 18px; font-size: 14px; }
+
+/* ── hero ── */
+.ag .hero { padding: 64px 0 56px; }
+.ag .hero-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+.ag h1.display { font-size: clamp(38px, 8.6vw, 72px); margin-bottom: 22px; }
+.ag .hero .lead { max-width: 520px; margin-bottom: 30px; font-size: 18px; }
+.ag .hero-cta { margin-bottom: 26px; }
+.ag .meta { display: flex; flex-wrap: wrap; gap: 8px 10px; }
+.ag .meta span {
+  font-size: 12.5px; color: var(--mute); border: 1px solid var(--line);
+  border-radius: 100px; padding: 6px 13px; background: var(--bg-2);
+}
+
+/* hero promise card (вместо фото) */
+.ag .promise {
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: 22px;
+  padding: 30px; box-shadow: 0 30px 70px rgba(21,20,15,.07);
+}
+.ag .promise-top { display: flex; align-items: baseline; gap: 12px; padding-bottom: 22px; border-bottom: 1px solid var(--line); margin-bottom: 22px; }
+.ag .promise-num { font-family: 'Fraunces', serif; font-weight: 500; font-size: 64px; line-height: .9; color: var(--acc); letter-spacing: -0.03em; }
+.ag .promise-cap { font-size: 14px; color: var(--mute); line-height: 1.4; }
+.ag .promise-cap b { display: block; color: var(--ink); font-size: 15px; font-weight: 600; }
+.ag .arow { display: flex; align-items: center; gap: 12px; padding: 11px 0; }
+.ag .arow + .arow { border-top: 1px dashed var(--line); }
+.ag .arow .dot { width: 30px; height: 30px; border-radius: 9px; background: var(--acc-soft); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ag .arow .dot svg { width: 15px; height: 15px; stroke: var(--acc); stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.ag .arow .t { font-size: 14.5px; font-weight: 500; color: var(--ink); }
+.ag .arow .s { font-size: 12.5px; color: var(--mute); }
+.ag .arow .meta-r { margin-left: auto; font-size: 11px; font-weight: 600; color: var(--acc); background: var(--acc-soft); padding: 4px 9px; border-radius: 100px; }
+
+/* ── section shell ── */
+.ag .sec { padding: 72px 0; border-top: 1px solid var(--line); }
+.ag .sec.paper { background: var(--bg-2); }
+.ag .sec-head { max-width: 720px; margin-bottom: 14px; }
+.ag .sec-title { font-size: clamp(28px, 4.6vw, 44px); }
+.ag .sec-head .lead { margin-top: 14px; }
+
+/* ── pains ── */
+.ag .grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 38px; }
+.ag .pain {
+  background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 22px 22px 22px 24px;
+  position: relative; transition: transform .2s, box-shadow .25s, border-color .2s;
+}
+.ag .sec.paper .pain { background: var(--bg); }
+.ag .pain::before { content: ''; position: absolute; left: 0; top: 20px; bottom: 20px; width: 3px; border-radius: 0 3px 3px 0; background: var(--acc); }
+.ag .pain:hover { transform: translateY(-3px); box-shadow: 0 16px 38px rgba(21,20,15,.07); border-color: rgba(20,98,79,.3); }
+.ag .pain h3 { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
+.ag .pain p { font-size: 13.5px; color: var(--mute); line-height: 1.5; }
+
+/* ── services / solution ── */
+.ag .card {
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: 20px; padding: 30px 28px;
+  transition: transform .25s, box-shadow .3s, border-color .25s;
+}
+.ag .sec.paper .card { background: var(--bg); }
+.ag .card:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(21,20,15,.09); border-color: rgba(20,98,79,.28); }
+.ag .card .ic { width: 50px; height: 50px; border-radius: 14px; background: var(--acc-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.ag .card .ic svg { width: 24px; height: 24px; stroke: var(--acc); stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.ag .card h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: -0.01em; margin-bottom: 9px; }
+.ag .card p { font-size: 14.5px; color: var(--mute); line-height: 1.6; }
+
+/* ── process ── */
+.ag .steps { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 38px; }
+.ag .step { display: grid; grid-template-columns: auto 1fr; gap: 22px; padding: 26px 0; border-top: 1px solid var(--line); align-items: start; }
+.ag .step:last-child { border-bottom: 1px solid var(--line); }
+.ag .step-n { font-family: 'Fraunces', serif; font-weight: 500; font-size: 40px; line-height: 1; color: var(--acc); letter-spacing: -0.02em; min-width: 64px; }
+.ag .step h3 { font-size: 19px; font-weight: 600; margin-bottom: 6px; }
+.ag .step p { font-size: 15px; color: var(--mute); line-height: 1.6; max-width: 620px; }
+
+/* ── results (dark band) ── */
+.ag .band { background: var(--ink); color: var(--bg); border-top: none; }
+.ag .band .sec-title, .ag .band .display { color: var(--bg); }
+.ag .band .lead { color: rgba(247,244,238,.7); }
+.ag .res { display: grid; grid-template-columns: 1fr; gap: 1px; margin-top: 38px; background: rgba(247,244,238,.14); border: 1px solid rgba(247,244,238,.14); border-radius: 18px; overflow: hidden; }
+.ag .res-i { background: var(--ink); padding: 24px 24px; display: flex; gap: 14px; align-items: flex-start; }
+.ag .res-i .ck { width: 24px; height: 24px; border-radius: 50%; background: var(--acc); flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+.ag .res-i .ck svg { width: 13px; height: 13px; stroke: #fff; stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.ag .res-i p { font-size: 15.5px; color: var(--bg); line-height: 1.5; }
+.ag .res-i p b { font-weight: 600; }
+
+/* ── objections (accordion) ── */
+.ag .faq { margin-top: 38px; }
+.ag details { border: 1px solid var(--line); border-radius: 14px; background: var(--bg-2); padding: 0 22px; margin-bottom: 12px; transition: border-color .2s, box-shadow .25s; }
+.ag .sec.paper details { background: var(--bg); }
+.ag details[open] { border-color: rgba(20,98,79,.32); box-shadow: 0 14px 34px rgba(21,20,15,.06); }
+.ag summary { list-style: none; cursor: pointer; padding: 19px 42px 19px 0; font-size: 16.5px; font-weight: 600; color: var(--ink); position: relative; }
+.ag summary::-webkit-details-marker { display: none; }
+.ag summary::after { content: '+'; position: absolute; right: 2px; top: 50%; transform: translateY(-50%); font-size: 24px; font-weight: 400; color: var(--acc); }
+.ag details[open] summary::after { content: '–'; }
+.ag .faq-a { padding: 0 0 20px; font-size: 15px; color: var(--mute); line-height: 1.65; max-width: 760px; }
+
+/* ── CTA + form ── */
+.ag .cta-grid { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: start; }
+.ag .form-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: 22px; padding: 30px 26px; box-shadow: 0 30px 70px rgba(21,20,15,.08); }
+.ag .form-card h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 24px; margin-bottom: 6px; }
+.ag .form-card .sub { font-size: 14px; color: var(--mute); margin-bottom: 20px; }
+.ag .fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px; }
+.ag .field input, .ag .field textarea {
+  width: 100%; background: var(--bg); border: 1.5px solid var(--line); border-radius: 12px;
+  padding: 14px 16px; font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink);
+  outline: none; transition: border-color .2s, box-shadow .2s; -webkit-appearance: none; resize: none;
+}
+.ag .field input::placeholder, .ag .field textarea::placeholder { color: #A8A294; }
+.ag .field input:focus, .ag .field textarea:focus { border-color: var(--acc); box-shadow: 0 0 0 3px var(--acc-soft); background: var(--bg-2); }
+.ag .field.invalid input, .ag .field.invalid textarea { border-color: #C0492B; box-shadow: 0 0 0 3px rgba(192,73,43,.1); }
+.ag .field-err { font-size: 11.5px; color: #C0492B; margin-top: 4px; display: none; font-weight: 500; }
+.ag .field.invalid .field-err { display: block; }
+.ag .submit { width: 100%; background: var(--acc); color: #fff; border: none; border-radius: 12px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-size: 15.5px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 10px 26px rgba(20,98,79,.22); transition: background .2s, transform .2s, box-shadow .25s; }
+.ag .submit:hover { background: var(--acc-d); transform: translateY(-2px); }
+.ag .submit svg { width: 17px; height: 17px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.ag .consent { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; cursor: pointer; }
+.ag .consent input { margin-top: 3px; width: 15px; height: 15px; flex-shrink: 0; accent-color: var(--acc); }
+.ag .consent span { font-size: 11.5px; color: var(--mute); line-height: 1.5; }
+.ag .form-micro { text-align: center; font-size: 11.5px; color: #A8A294; margin-top: 12px; }
+.ag .form-success { display: none; flex-direction: column; align-items: center; text-align: center; padding: 24px 0; gap: 12px; }
+.ag .form-success .ck { width: 52px; height: 52px; border-radius: 50%; background: var(--acc-soft); display: flex; align-items: center; justify-content: center; }
+.ag .form-success .ck svg { width: 24px; height: 24px; stroke: var(--acc); stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.ag .form-success h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 23px; }
+.ag .form-success p { font-size: 14px; color: var(--mute); max-width: 280px; line-height: 1.6; }
+.ag .cta-side h2 { margin-bottom: 18px; }
+.ag .cta-points { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+.ag .cta-points li { list-style: none; display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--ink); }
+.ag .cta-points .ck { width: 22px; height: 22px; border-radius: 50%; background: var(--acc); flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+.ag .cta-points .ck svg { width: 12px; height: 12px; stroke: #fff; stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── footer ── */
+.ag .ft { background: var(--ink); color: rgba(247,244,238,.7); padding: 40px 0; }
+.ag .ft-in { max-width: 1120px; margin: 0 auto; padding: 0 22px; display: flex; flex-direction: column; gap: 18px; }
+.ag .ft .brand { color: var(--bg); }
+.ag .ft .brand .mk { background: var(--acc); }
+.ag .ft-c { font-size: 13.5px; line-height: 1.8; }
+.ag .ft-c a { color: rgba(247,244,238,.85) !important; text-decoration: none; }
+.ag .ft-note { font-size: 12px; color: rgba(247,244,238,.45); }
+
+/* ════ TABLET ≥ 640 ════ */
+@media (min-width: 640px) {
+  .ag .grid { grid-template-columns: 1fr 1fr; }
+  .ag .res { grid-template-columns: 1fr 1fr; }
+}
+
+/* ════ DESKTOP ≥ 920 ════ */
+@media (min-width: 920px) {
+  .ag .hero { padding: 92px 0 84px; }
+  .ag .hero-grid { grid-template-columns: 1.08fr 0.92fr; gap: 56px; }
+  .ag .sec { padding: 100px 0; }
+  .ag .grid.g3 { grid-template-columns: repeat(3, 1fr); }
+  .ag .res { grid-template-columns: repeat(3, 1fr); }
+  .ag .step { grid-template-columns: 96px 1fr; gap: 30px; }
+  .ag .step-n { font-size: 48px; }
+  .ag .cta-grid { grid-template-columns: 0.95fr 1.05fr; gap: 52px; }
+  .ag .ft-in { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+</style>
+
+<div class="ag" id="ag-root">
+
+  <!-- ── HEADER ── -->
+  <header class="hd">
+    <div class="hd-in">
+      <a href="#ag-lead" class="brand ag-scroll"><span class="mk">A</span>Ваш бренд</a>
+      <a href="#ag-lead" class="btn btn-primary ag-scroll">Получить разбор</a>
+    </div>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+
+        <div>
+          <span class="kicker">ИИ-агент для бьюти-юристов</span>
+          <h1 class="display">Возвращаю бьюти-юристу <em>5–10 часов в неделю</em></h1>
+          <p class="lead">ИИ-агент берёт на себя заявки, переписки и рутину с клиентами. Вы ведёте дела и растёте, а не отвечаете на однотипные сообщения вручную.</p>
+          <div class="hero-cta">
+            <div class="btn-row">
+              <a href="#ag-lead" class="btn btn-primary ag-scroll">Получить разбор
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a href="#how" class="btn btn-ghost ag-scroll">Как это работает</a>
+            </div>
+          </div>
+          <div class="meta">
+            <span>Узкая ниша: юристы</span>
+            <span>Премиальная упаковка</span>
+            <span>Автоматизация на ИИ</span>
+          </div>
+        </div>
+
+        <div class="promise">
+          <div class="promise-top">
+            <div class="promise-num">5–10</div>
+            <div class="promise-cap"><b>часов в неделю</b>освобождаем от рутины</div>
+          </div>
+          <div class="arow">
+            <span class="dot"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H7l-3 3z"/></svg></span>
+            <div><div class="t">Заявки</div><div class="s">мгновенный ответ 24/7</div></div>
+            <span class="meta-r">авто</span>
+          </div>
+          <div class="arow">
+            <span class="dot"><svg viewBox="0 0 24 24"><path d="M8 10h8M8 14h5"/><path d="M21 12a8 8 0 0 1-11.3 7.3L3 21l1.7-6.7A8 8 0 1 1 21 12z"/></svg></span>
+            <div><div class="t">Переписки</div><div class="s">типовые вопросы — на агенте</div></div>
+            <span class="meta-r">авто</span>
+          </div>
+          <div class="arow">
+            <span class="dot"><svg viewBox="0 0 24 24"><path d="M16 11a4 4 0 1 0-8 0"/><path d="M3 20a7 7 0 0 1 18 0"/></svg></span>
+            <div><div class="t">Клиенты</div><div class="s">не «сливаются», ведутся системно</div></div>
+            <span class="meta-r">авто</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ПАИНЫ ── -->
+  <section class="sec paper">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Знакомо?</span>
+        <h2 class="display sec-title">Вы — сильный юрист, <em>но выглядите как ещё один</em></h2>
+      </div>
+      <div class="grid g3">
+        <div class="pain"><h3>Нет стабильного потока клиентов</h3><p>Обращения то есть, то нет — всё держится на сарафане и удаче.</p></div>
+        <div class="pain"><h3>Заявки теряются</h3><p>Не успеваете ответить вовремя — и клиент уходит к тому, кто ответил быстрее.</p></div>
+        <div class="pain"><h3>Всё вручную</h3><p>Переписки, ответы на одни и те же вопросы, рутина — съедают часы каждый день.</p></div>
+        <div class="pain"><h3>Сайт не вызывает доверия</h3><p>Упаковка слабее вашей экспертизы — и обесценивает дорогие услуги.</p></div>
+        <div class="pain"><h3>Нет времени на контент</h3><p>Вести соцсети некогда, а без этого нет входящих обращений.</p></div>
+        <div class="pain"><h3>Нет ощущения бренда</h3><p>Клиент не считывает уровень — сложно поднять чек и выделиться.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── РЕШЕНИЕ ── -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Решение</span>
+        <h2 class="display sec-title">Упаковка <em>+</em> автоматизация — как система</h2>
+        <p class="lead">Совмещаю две вещи, которых обычно не хватает юристу: дорогой digital-образ и систему, которая сама собирает и ведёт заявки.</p>
+      </div>
+      <div class="grid g3">
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M7 14h6"/></svg></div>
+          <h3>Digital-бренд</h3>
+          <p>Премиальный сайт и единый стиль, в котором вы выглядите дорого и экспертно — под уровень ваших услуг.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4z"/><path d="M5 21a7 7 0 0 1 14 0"/><circle cx="19" cy="6" r="2"/></svg></div>
+          <h3>ИИ-агент заявок и переписок</h3>
+          <p>Отвечает мгновенно 24/7, квалифицирует обращения и не даёт клиентам «сливаться», пока вы заняты делами.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 3v6h6"/><path d="M12 8v4l3 2"/></svg></div>
+          <h3>Поток заявок</h3>
+          <p>Система привлекает обращения без ежедневного ведения соцсетей — заявки приходят, даже когда вы не в эфире.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7V5h16v2M9 21h6M12 5v16"/></svg></div>
+          <h3>Автоматизация работы</h3>
+          <p>Типовые переписки, напоминания и ответы — на автомате. Меньше рутины, больше времени на клиентов.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 20l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg></div>
+          <h3>Рост чека и позиция</h3>
+          <p>Сильный бренд выделяет вас среди юристов, повышает доверие — и позволяет поднять стоимость услуг.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>Под ключ</h3>
+          <p>Настраиваю, подключаю и передаю готовое. Разбираться в технике самой не придётся.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ПРОЦЕСС ── -->
+  <section class="sec paper" id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Как это работает</span>
+        <h2 class="display sec-title">Четыре шага <em>до системы</em></h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-n">01</div><div><h3>Разбор</h3><p>Изучаю вашу нишу, услуги, текущую упаковку и узкие места — где теряются клиенты и время.</p></div></div>
+        <div class="step"><div class="step-n">02</div><div><h3>Упаковка</h3><p>Собираю премиальный сайт и единый digital-бренд под уровень ваших услуг.</p></div></div>
+        <div class="step"><div class="step-n">03</div><div><h3>Автоматизация</h3><p>Подключаю ИИ-агента: заявки, переписки и работа с клиентами идут без ручного труда.</p></div></div>
+        <div class="step"><div class="step-n">04</div><div><h3>Запуск</h3><p>Вы получаете поток заявок и −5–10 часов рутины в неделю. Я на связи до результата.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── РЕЗУЛЬТАТЫ (тёмная лента) ── -->
+  <section class="sec band">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker" style="color:#7FD4BE">Что вы получите</span>
+        <h2 class="display sec-title">Результат, который видно</h2>
+      </div>
+      <div class="res">
+        <div class="res-i"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Клиенты из интернета</b> без ежедневного ведения соцсетей</p></div>
+        <div class="res-i"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Дорогой, экспертный образ</b> — и выше чек</p></div>
+        <div class="res-i"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Заявки не теряются</b> — ответ 24/7</p></div>
+        <div class="res-i"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Сильный личный бренд</b>, который выделяет</p></div>
+        <div class="res-i"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>5–10 свободных часов</b> в неделю</p></div>
+        <div class="res-i"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Современный сайт</b>, которым не стыдно делиться</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ВОЗРАЖЕНИЯ ── -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Сомнения</span>
+        <h2 class="display sec-title">Честно отвечаю <em>на главные «но»</em></h2>
+      </div>
+      <div class="faq">
+        <details open><summary>«У меня уже есть сайт»</summary><div class="faq-a">Если он не приносит заявки и не вызывает доверия — это визитка, а не система. Усиливаем упаковку и подключаем автоматизацию, чтобы сайт начал работать на заявки.</div></details>
+        <details><summary>«Мне хватает сарафана»</summary><div class="faq-a">Сарафан нестабилен и не масштабируется. Мы добавляем предсказуемый поток обращений, не теряя текущих клиентов.</div></details>
+        <details><summary>«Это дорого»</summary><div class="faq-a">Освобождённые 5–10 часов в неделю и рост чека окупают вложение. На разборе считаем экономику под вашу практику — без абстракций.</div></details>
+        <details><summary>«Я не веду соцсети»</summary><div class="faq-a">Система собирает заявки без ежедневного контента — в этом и смысл автоматизации. Соцсети перестают быть обязательным условием.</div></details>
+        <details><summary>«Я не разбираюсь в технике»</summary><div class="faq-a">Делаю под ключ и передаю готовое. Разбираться в настройках не нужно — всё работает за вас.</div></details>
+        <details><summary>«Уже обжигалась с подрядчиками»</summary><div class="faq-a">Прозрачные этапы, понятный результат на каждом шаге и связь до запуска и после. Вы всегда видите, за что платите.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA + ФОРМА ── -->
+  <section class="sec paper" id="ag-lead">
+    <div class="wrap">
+      <div class="cta-grid">
+        <div class="cta-side">
+          <span class="kicker">Бесплатно</span>
+          <h2 class="display sec-title">Разбор вашей упаковки <em>и план автоматизации</em></h2>
+          <p class="lead">Оставьте заявку — посмотрю вашу нишу и текущую упаковку, покажу, где теряются клиенты и время, и что автоматизировать в первую очередь.</p>
+          <ul class="cta-points">
+            <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Конкретный план под вашу практику</li>
+            <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Оценка, что окупится в первую очередь</li>
+            <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Без обязательств и давления</li>
+          </ul>
+        </div>
+
+        <div class="form-card" id="ag-form-wrap">
+          <div id="ag-form-body">
+            <h3>Получить разбор</h3>
+            <div class="sub">Отвечу в течение рабочего дня.</div>
+            <form id="ag-form" novalidate>
+              <div class="fields">
+                <div class="field" data-n="name">
+                  <input type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+                  <div class="field-err">Введите имя (минимум 2 символа)</div>
+                </div>
+                <div class="field" data-n="contact">
+                  <input type="text" name="contact" placeholder="Телефон или Telegram" autocomplete="tel">
+                  <div class="field-err">Укажите контакт (минимум 5 символов)</div>
+                </div>
+                <div class="field" data-n="niche">
+                  <input type="text" name="niche" placeholder="Ваша ниша (необязательно)">
+                </div>
+              </div>
+              <label class="consent" id="ag-consent-wrap">
+                <input type="checkbox" id="ag-consent">
+                <span>Согласен(на) на обработку персональных данных и связь по указанным контактам</span>
+              </label>
+              <div class="field-err" id="ag-consent-err" style="margin:-6px 0 10px;">Необходимо ваше согласие</div>
+              <button type="submit" class="submit">Отправить заявку
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </form>
+            <div class="form-micro">Заявка придёт на почту и в Telegram</div>
+          </div>
+          <div class="form-success" id="ag-success">
+            <span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <h3>Заявка отправлена</h3>
+            <p>Спасибо! Свяжусь с вами в течение рабочего дня.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="ft">
+    <div class="ft-in">
+      <div>
+        <div class="brand"><span class="mk">A</span>Ваш бренд</div>
+        <div class="ft-c">Упаковка и автоматизация для юристов в узких нишах</div>
+      </div>
+      <div class="ft-c">
+        <a href="#ag-lead" class="ag-scroll">Оставить заявку</a><br>
+        <span class="ft-note">© <span id="ag-year">2025</span> · Все права защищены</span>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /ag-root -->
+
+<script>
+(function () {
+  /* ════════ НАСТРОЙКИ ════════ */
+  var EMAIL        = '';   // ← ваш email для заявок (mailto-доставка)
+  var TG_TOKEN     = '';   // ← токен Telegram-бота (только под заявки; будет виден в коде страницы)
+  var TG_CHAT_ID   = '';   // ← chat_id, куда падают заявки
+  var EMAIL_ENDPOINT = ''; // ← необяз.: URL формы-релея (напр. Formspree) для авто-письма без mailto
+  /* Пока поля пустые — форма показывает «Заявка отправлена» (демо). Заполните для реальной доставки. */
+  /* ═══════════════════════════ */
+
+  var root = document.getElementById('ag-root');
+  if (!root) return;
+
+  try { document.getElementById('ag-year').textContent = String(new Date().getFullYear()); } catch (e) {}
+
+  /* плавный скролл по якорям */
+  root.querySelectorAll('.ag-scroll').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = (a.getAttribute('href') || '').replace('#', '');
+      var t = id && document.getElementById(id);
+      if (!t) return;
+      e.preventDefault();
+      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  var form = document.getElementById('ag-form');
+  if (!form) return;
+  function field(n) { return root.querySelector('.field[data-n="' + n + '"]'); }
+  function setErr(n, on) { var f = field(n); if (f) f.classList.toggle('invalid', !!on); }
+  ['name', 'contact'].forEach(function (n) {
+    var f = field(n); if (!f) return;
+    var i = f.querySelector('input,textarea');
+    if (i) i.addEventListener('input', function () { setErr(n, false); });
+  });
+  var consentErr = document.getElementById('ag-consent-err');
+  var cb = document.getElementById('ag-consent');
+  if (cb) cb.addEventListener('change', function () { if (consentErr) consentErr.style.display = 'none'; });
+
+  function showSuccess() {
+    var b = document.getElementById('ag-form-body');
+    var s = document.getElementById('ag-success');
+    if (b) b.style.display = 'none';
+    if (s) s.style.display = 'flex';
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name    = form.elements['name']    ? form.elements['name'].value.trim()    : '';
+    var contact = form.elements['contact'] ? form.elements['contact'].value.trim() : '';
+    var niche   = form.elements['niche']   ? form.elements['niche'].value.trim()   : '';
+
+    var ok = true;
+    if (name.length < 2)    { setErr('name', true); ok = false; }
+    if (contact.length < 5) { setErr('contact', true); ok = false; }
+    if (cb && !cb.checked)  { if (consentErr) consentErr.style.display = 'block'; ok = false; }
+    if (!ok) return;
+
+    var text = 'Имя: ' + name + '\nКонтакт: ' + contact + (niche ? '\nНиша: ' + niche : '');
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; }
+
+    var jobs = [];
+    if (TG_TOKEN && TG_CHAT_ID) {
+      jobs.push(fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: '📩 Новая заявка с сайта\n\n' + text })
+      }));
+    }
+    if (EMAIL_ENDPOINT) {
+      jobs.push(fetch(EMAIL_ENDPOINT, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email: EMAIL, name: name, contact: contact, niche: niche, message: text })
+      }));
+    }
+    if (!jobs.length && EMAIL) {
+      window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Заявка с сайта') + '&body=' + encodeURIComponent(text);
+    }
+
+    if (jobs.length) {
+      Promise.all(jobs.map(function (p) { return p.catch(function () {}); })).then(showSuccess);
+    } else {
+      showSuccess();
+    }
+  });
+})();
+</script>
