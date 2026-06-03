@@ -192,6 +192,26 @@
   .lw .split .ph { min-height: 420px; }
   .lw .steps { grid-template-columns: 1fr 1fr; gap: 0 56px; }
 }
+
+/* ── хелперы под новую структуру (та же стилистика) ── */
+.lw .sq.soft { background: var(--band); border: 1px solid var(--line); }
+.lw .sq.soft svg { stroke: var(--ink); }
+.lw .fcard.cost { border-left: 3px solid var(--ink); }
+@media (min-width: 720px) { .lw .cards.g2 { grid-template-columns: repeat(2, 1fr); } }
+/* До / После */
+.lw .compare { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 40px; }
+@media (min-width: 720px) { .lw .compare { grid-template-columns: 1fr 1fr; } }
+.lw .cc { border: 1px solid var(--line); border-radius: 14px; padding: 28px 26px; background: var(--bg); }
+.lw .cc.after { background: var(--ink); border-color: var(--ink); }
+.lw .cc .lab { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px; display: inline-block; }
+.lw .cc.before .lab { color: var(--mute); }
+.lw .cc.after .lab { color: #7FD4BE; }
+.lw .cc ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.lw .cc li { font-size: 14.5px; line-height: 1.5; padding-left: 26px; position: relative; }
+.lw .cc.before li { color: var(--mute); }
+.lw .cc.before li::before { content: '✕'; position: absolute; left: 0; color: #C0492B; font-weight: 700; }
+.lw .cc.after li { color: rgba(255,255,255,.92); }
+.lw .cc.after li::before { content: '✓'; position: absolute; left: 0; color: #7FD4BE; font-weight: 700; }
 </style>
 
 <div class="lw" id="lw-root">
@@ -201,12 +221,12 @@
     <div class="hd-in">
       <a href="#lw-top" class="logo lw-scroll">ВАШ БРЕНД<sup>™</sup></a>
       <nav class="nav">
-        <a href="#what" class="lw-scroll">Услуги</a>
-        <a href="#how" class="lw-scroll">Как работает</a>
-        <a href="#results" class="lw-scroll">Результаты</a>
-        <a href="#lead" class="lw-scroll">Контакты</a>
+        <a href="#problem" class="lw-scroll">Проблема</a>
+        <a href="#solution" class="lw-scroll">Решение</a>
+        <a href="#cases" class="lw-scroll">Примеры</a>
+        <a href="#how" class="lw-scroll">Как работаю</a>
       </nav>
-      <a href="#lead" class="btn btn-solid lw-scroll">Получить разбор</a>
+      <a href="#lead" class="btn btn-solid lw-scroll">Получить аудит</a>
     </div>
   </header>
 
@@ -215,13 +235,13 @@
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <span class="eyebrow">ИИ-автоматизация для юристов</span>
+          <span class="eyebrow">Для юристов в узких нишах</span>
           <h1 class="h">Освобождаю юристу <em>до 80%</em> времени</h1>
-          <p class="lead">Автоматизирую рутинные процессы с помощью ИИ — заявки, переписки и работу с клиентами. Первые результаты — уже через 2 месяца.</p>
+          <p class="lead">Заявки, переписки и рутина перестают съедать ваши вечера и выходные. Вы занимаетесь делами и жизнью — а не операционкой. Первые результаты — уже через 2 месяца.</p>
           <div class="btn-row">
-            <a href="#lead" class="btn btn-solid lw-scroll">Получить разбор
+            <a href="#lead" class="btn btn-solid lw-scroll">Получить аудит процессов
               <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a href="#how" class="btn btn-out lw-scroll">Как это работает</a>
+            <a href="#problem" class="btn btn-out lw-scroll">Узнаёте себя?</a>
           </div>
         </div>
         <div class="ph">
@@ -250,146 +270,187 @@
     </div>
   </section>
 
-  <!-- WHAT I AUTOMATE -->
-  <section class="sec" id="what">
+  <!-- 2. УЗНАВАНИЕ ПРОБЛЕМЫ -->
+  <section class="sec" id="problem">
     <div class="wrap">
       <div class="sec-head center">
-        <span class="eyebrow">Что я автоматизирую</span>
-        <h2 class="h sec-title">Рутину забирает ИИ-агент</h2>
-        <p class="lead">Три процесса, которые отнимают у юриста больше всего времени — и которые лучше доверить системе.</p>
+        <span class="eyebrow">Знакомо?</span>
+        <h2 class="h sec-title">Большая часть дня уходит не на дела, а на рутину</h2>
+        <p class="lead">Если вы узнаёте себя хотя бы в трёх пунктах — дело не в вас. Просто процессы держатся на ручном труде.</p>
       </div>
       <div class="cards">
         <div class="fcard">
-          <div class="sq"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></div>
+          <div class="sq soft"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.3 7.3L3 21l1.7-6.7A8 8 0 1 1 21 12z"/></svg></div>
+          <h3>Постоянные переписки</h3>
+          <p>Мессенджеры не замолкают, и каждое сообщение будто требует ответа прямо сейчас.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq soft"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+          <h3>Одни и те же вопросы</h3>
+          <p>Клиенты спрашивают одно и то же, а вы отвечаете вручную по десятому кругу.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq soft"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 11h5l2 3h2l2-3h5"/></svg></div>
+          <h3>Заявки — вручную</h3>
+          <p>Каждое обращение нужно заметить, записать и не забыть — иначе оно теряется.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq soft"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>Не хватает времени</h3>
+          <p>День расписан, а на главное — клиентов и развитие — времени не остаётся.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq soft"><svg viewBox="0 0 24 24"><path d="M21 12.8A8 8 0 1 1 11.2 3a6 6 0 0 0 9.8 9.8z"/></svg></div>
+          <h3>Вечера и выходные в работе</h3>
+          <p>Доделываете задачи поздно вечером и по выходным, потому что иначе не успеть.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. ЦЕНА РУЧНОЙ РАБОТЫ -->
+  <section class="sec band" id="cost">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Цена вопроса</span>
+        <h2 class="h sec-title">Во что обходится работа вручную</h2>
+        <p class="lead">Ручные процессы кажутся бесплатными — но платите за них вы. Каждый день: временем, деньгами и силами.</p>
+      </div>
+      <div class="cards g2">
+        <div class="fcard cost">
+          <h3>Потерянные заявки</h3>
+          <p>Не успели ответить вовремя — и клиент ушёл к тому, кто ответил быстрее. Вы об этом даже не узнаёте.</p>
+        </div>
+        <div class="fcard cost">
+          <h3>Выгорание</h3>
+          <p>Когда всё держится на вас вручную, усталость копится, а удовольствие от работы уходит.</p>
+        </div>
+        <div class="fcard cost">
+          <h3>Нет времени на развитие</h3>
+          <p>Операционка съедает день — на рост, обучение и новые услуги ресурса не остаётся.</p>
+        </div>
+        <div class="fcard cost">
+          <h3>Невозможно масштабироваться</h3>
+          <p>Больше клиентов — больше ручной работы. Без системы вы упираетесь в потолок собственного времени.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. РЕШЕНИЕ ПРОСТЫМ ЯЗЫКОМ -->
+  <section class="sec" id="solution">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">Как это решается</span>
+        <h2 class="h sec-title">Часть работы начинает выполняться сама</h2>
+        <p class="lead">Никаких сложных технологий с вашей стороны. Просто часть процессов перестаёт зависеть от вашего ручного участия — и время возвращается вам.</p>
+      </div>
+      <div class="cards">
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.3 7.3L3 21l1.7-6.7A8 8 0 1 1 21 12z"/><path d="M9 11.5l2 2 4-4"/></svg></div>
+          <h3>Клиенты получают ответы автоматически</h3>
+          <p>На частые вопросы ответ приходит сразу — в любое время, даже когда вы не у телефона.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 12l3 3 5-6"/></svg></div>
+          <h3>Заявки обрабатываются без вашего участия</h3>
+          <p>Каждое обращение фиксируется и не теряется — вам остаётся только довести клиента до сделки.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
+          <h3>Рутинные задачи делаются быстрее</h3>
+          <p>Повторяющиеся действия выполняются за секунды — вместо часов вашего времени.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. ЧТО МОЖНО АВТОМАТИЗИРОВАТЬ -->
+  <section class="sec band" id="what">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Конкретно</span>
+        <h2 class="h sec-title">Что можно поручить системе уже сейчас</h2>
+        <p class="lead">Начать можно с одного процесса — и сразу почувствовать разницу. Вот что чаще всего забирает больше всего времени.</p>
+      </div>
+      <div class="cards">
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 11h5l2 3h2l2-3h5"/></svg></div>
           <h3>Заявки</h3>
-          <p>Мгновенный ответ 24/7, квалификация обращения и фиксация — ни один клиент не теряется, пока вы заняты делами.</p>
+          <p>Приём, фиксация и распределение обращений — без ручного контроля.</p>
         </div>
         <div class="fcard">
           <div class="sq"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.3 7.3L3 21l1.7-6.7A8 8 0 1 1 21 12z"/><path d="M8 11h8M8 14h5"/></svg></div>
-          <h3>Переписки</h3>
-          <p>Типовые вопросы и сопровождение клиента ведёт ИИ-агент в вашем тоне — без однотипной ручной переписки.</p>
+          <h3>Ответы клиентам</h3>
+          <p>Частые вопросы закрываются мгновенно — в вашем тоне и по вашим правилам.</p>
         </div>
         <div class="fcard">
-          <div class="sq"><svg viewBox="0 0 24 24"><path d="M4 7V5h16v2M9 21h6M12 5v16"/></svg></div>
-          <h3>Рутинные процессы</h3>
-          <p>Напоминания, типовые документы и повторяющиеся действия — на автомате. Меньше операционки, больше практики.</p>
+          <div class="sq"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 21a7 7 0 0 1 14 0"/><path d="M16 8l1.5 1.5L20 7"/></svg></div>
+          <h3>Первичные консультации</h3>
+          <p>Базовый разбор запроса и запись на встречу — пока вы заняты делами.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/></svg></div>
+          <h3>Документы</h3>
+          <p>Типовые шаблоны и заполнение — быстрее и без рутинных ошибок.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg></div>
+          <h3>Напоминания</h3>
+          <p>Клиентам и вам — о встречах, сроках и следующих шагах. Ничего не забывается.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SPLIT FEATURE -->
-  <section class="sec band">
+  <!-- 6. ДО / ПОСЛЕ -->
+  <section class="sec" id="cases">
     <div class="wrap">
-      <div class="split">
-        <div class="ph">
-          <div class="ph-in">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            <span>Фото — добавим позже</span>
-          </div>
+      <div class="sec-head center">
+        <span class="eyebrow">Примеры</span>
+        <h2 class="h sec-title">Было / стало</h2>
+        <p class="lead">Так меняется обычный день юриста, когда рутина перестаёт держаться на ручном труде.</p>
+      </div>
+      <div class="compare">
+        <div class="cc before">
+          <span class="lab">До</span>
+          <ul>
+            <li>Заявки теряются между мессенджерами</li>
+            <li>Одни и те же вопросы — вручную, по кругу</li>
+            <li>Ответы клиентам только в рабочее время</li>
+            <li>Вечера и выходные уходят на операционку</li>
+            <li>Рост упирается в нехватку времени</li>
+          </ul>
         </div>
-        <div>
-          <span class="eyebrow">Решение</span>
-          <h2 class="h">Понятная система вместо ручного труда</h2>
-          <p class="lead">Совмещаю две вещи, которых обычно не хватает юристу: премиальную упаковку, в которой вы выглядите дорого, и автоматизацию, которая сама собирает и ведёт клиентов. Не «ещё один сайт», а работающая система привлечения.</p>
-          <a href="#how" class="btn btn-solid lw-scroll">Как это работает</a>
+        <div class="cc after">
+          <span class="lab">После</span>
+          <ul>
+            <li>Все обращения собраны в одном месте</li>
+            <li>Частые вопросы закрываются автоматически</li>
+            <li>Клиенты получают ответ сразу, в любое время</li>
+            <li>Вечера и выходные — снова ваши</li>
+            <li>До 80% времени — на клиентов и развитие</li>
+          </ul>
         </div>
       </div>
+      <div class="ph-note">Формат «до / после» — дополним цифрами реального кейса после запуска.</div>
     </div>
   </section>
 
-  <!-- WHAT YOU GET (columns) -->
-  <section class="sec" id="results">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Что вы получаете</span>
-        <h2 class="h sec-title">Вы растёте, а не выгораете</h2>
-      </div>
-      <div class="cols">
-        <div class="col">
-          <div class="sq"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 3v6h6"/><path d="M12 8v4l3 2"/></svg></div>
-          <h3>Поток заявок</h3>
-          <p>Предсказуемые обращения из интернета — без ежедневного ведения соцсетей.</p>
-          <a href="#lead" class="lw-scroll">Получить разбор <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-        <div class="col">
-          <div class="sq"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 20l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg></div>
-          <h3>Дорогой личный бренд</h3>
-          <p>Премиальная упаковка, которая выделяет вас среди юристов и позволяет поднять чек.</p>
-          <a href="#lead" class="lw-scroll">Получить разбор <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-        <div class="col">
-          <div class="sq"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <h3>До 80% времени</h3>
-          <p>Рутина уходит на ИИ — освобождается время на клиентов, развитие и жизнь.</p>
-          <a href="#lead" class="lw-scroll">Получить разбор <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS (steps) -->
+  <!-- 7. КАК Я РАБОТАЮ (процесс) -->
   <section class="sec band" id="how">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">Как это работает</span>
-        <h2 class="h sec-title">Четыре шага до системы</h2>
+        <span class="eyebrow">Как я работаю</span>
+        <h2 class="h sec-title">Прозрачный процесс за 4 шага</h2>
+        <p class="lead">Без сложных терминов и техники с вашей стороны. Вы видите результат на каждом этапе.</p>
       </div>
       <div class="steps">
-        <div class="step"><div class="step-n">01</div><div><h3>Разбор</h3><p>Изучаю вашу нишу, услуги и текущую упаковку — где теряются клиенты и время.</p></div></div>
-        <div class="step"><div class="step-n">02</div><div><h3>Упаковка</h3><p>Собираю премиальный сайт и единый digital-бренд под уровень ваших услуг.</p></div></div>
-        <div class="step"><div class="step-n">03</div><div><h3>Автоматизация</h3><p>Подключаю ИИ-агента: заявки, переписки и работа с клиентами идут без ручного труда.</p></div></div>
-        <div class="step"><div class="step-n">04</div><div><h3>Запуск</h3><p>Поток заявок и до 80% времени без рутины. Первые результаты — уже через 2 месяца.</p></div></div>
+        <div class="step"><div class="step-n">01</div><div><h3>Аудит процессов</h3><p>Смотрю ваш обычный рабочий день и нахожу, где именно теряются время и клиенты.</p></div></div>
+        <div class="step"><div class="step-n">02</div><div><h3>План</h3><p>Показываю, что можно убрать из ручной работы в первую очередь и какой будет результат.</p></div></div>
+        <div class="step"><div class="step-n">03</div><div><h3>Настройка</h3><p>Налаживаю процессы: заявки и ответы клиентам начинают идти без вашего участия.</p></div></div>
+        <div class="step"><div class="step-n">04</div><div><h3>Результат</h3><p>Рутина уходит, время возвращается. Первые изменения — уже через 2 месяца.</p></div></div>
       </div>
-    </div>
-  </section>
-
-  <!-- COMMITTED split -->
-  <section class="sec">
-    <div class="wrap">
-      <div class="split rev">
-        <div>
-          <span class="eyebrow">Подход</span>
-          <h2 class="h">Помогаю юристу выглядеть дорого и работать меньше</h2>
-          <p class="lead">Узкая специализация, премиальная упаковка и автоматизация на ИИ — это и есть ваша сила на рынке, где почти никто не умеет в digital. Беру процесс под ключ: настраиваю, подключаю и передаю готовое.</p>
-          <a href="#lead" class="btn btn-solid lw-scroll">Получить разбор
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-        <div class="ph">
-          <div class="ph-in">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            <span>Фото — добавим позже</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS (placeholders) -->
-  <section class="sec band">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Отзывы</span>
-        <h2 class="h sec-title">Что говорят клиенты</h2>
-      </div>
-      <div class="tgrid">
-        <div class="tcard">
-          <div class="stars">★★★★★</div>
-          <p>Здесь будет реальный отзыв клиента о результатах и совместной работе.</p>
-          <div class="who"><span class="av"></span><div><b>Имя клиента</b><span>бьюти-юрист</span></div></div>
-        </div>
-        <div class="tcard">
-          <div class="stars">★★★★★</div>
-          <p>Здесь будет реальный отзыв клиента о результатах и совместной работе.</p>
-          <div class="who"><span class="av"></span><div><b>Имя клиента</b><span>юрист по онлайн-школам</span></div></div>
-        </div>
-        <div class="tcard">
-          <div class="stars">★★★★★</div>
-          <p>Здесь будет реальный отзыв клиента о результатах и совместной работе.</p>
-          <div class="who"><span class="av"></span><div><b>Имя клиента</b><span>медицинский юрист</span></div></div>
-        </div>
-      </div>
-      <div class="ph-note">Блок-плейсхолдер — заменим на реальные отзывы после первых кейсов.</div>
     </div>
   </section>
 
@@ -398,14 +459,14 @@
     <div class="wrap">
       <div class="cta">
         <span class="eyebrow">Бесплатно</span>
-        <h2 class="h">Получить персональный разбор</h2>
-        <p class="lead">Посмотрю вашу нишу и упаковку, покажу, где теряются клиенты и время, и что автоматизировать в первую очередь. Без обязательств.</p>
+        <h2 class="h">Узнайте, где вы теряете время каждый день</h2>
+        <p class="lead">Бесплатный аудит процессов: посмотрю ваш рабочий день и покажу, что можно перестать делать вручную уже сейчас. Без обязательств и сложных терминов.</p>
       </div>
 
       <div class="form-wrap" id="lw-form-wrap">
         <div id="lw-form-body">
-          <h3>Оставить заявку</h3>
-          <div class="sub">Отвечу в течение рабочего дня.</div>
+          <h3>Получить аудит процессов</h3>
+          <div class="sub">Бесплатно. Отвечу в течение рабочего дня.</div>
           <form id="lw-form" novalidate>
             <div class="fields">
               <div class="field" data-n="name">
@@ -445,15 +506,15 @@
       <div class="ft-grid">
         <div>
           <a href="#lw-top" class="logo lw-scroll">ВАШ БРЕНД<sup>™</sup></a>
-          <div class="ft-c">Упаковка и ИИ-автоматизация<br>для юристов в узких нишах</div>
+          <div class="ft-c">Меньше рутины — больше практики.<br>Для юристов в узких нишах</div>
         </div>
         <div>
           <h4>Навигация</h4>
           <div class="ft-links">
-            <a href="#what" class="lw-scroll">Услуги</a>
-            <a href="#how" class="lw-scroll">Как работает</a>
-            <a href="#results" class="lw-scroll">Результаты</a>
-            <a href="#lead" class="lw-scroll">Оставить заявку</a>
+            <a href="#problem" class="lw-scroll">Проблема</a>
+            <a href="#solution" class="lw-scroll">Решение</a>
+            <a href="#cases" class="lw-scroll">Примеры</a>
+            <a href="#lead" class="lw-scroll">Получить аудит</a>
           </div>
         </div>
         <div>
