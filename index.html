@@ -201,6 +201,15 @@
   .lw .c3 { border-top: none; border-left: 1px solid var(--line); }
   .lw .c3:first-child { border-left: none; }
 }
+
+/* группы услуг (A / B / C) */
+.lw .svc-group { margin-top: 44px; }
+.lw .svc-group-h { display: flex; align-items: center; gap: 14px; }
+.lw .svc-group-h h3 { font-family: 'Archivo', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 16px; white-space: nowrap; }
+.lw .svc-group-h span { font-size: 13px; color: var(--mute); white-space: nowrap; }
+.lw .svc-group-h::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+.lw .svc-group .svc { margin-top: 20px; }
+@media (max-width: 520px) { .lw .svc-group-h span { display: none; } }
 </style>
 
 <div class="lw" id="lw-root">
@@ -302,39 +311,57 @@
         <h2 class="h sec-title">Конкретные инструменты под вашу практику</h2>
         <p class="lead">Подключаем по одному или вместе. Нажмите, чтобы раскрыть состав и результат.</p>
       </div>
-      <div class="svc">
-        <details>
-          <summary><span class="num">1</span><h3>Сайт для юриста<small>Сайт начинает привлекать клиентов</small></h3></summary>
-          <div class="body"><div class="k">Что делаем</div><ul><li>Лендинг</li><li>Сайт услуг</li><li>Посадочные страницы</li></ul><div class="rr"><b>Результат:</b> сайт начинает привлекать клиентов.</div></div>
-        </details>
-        <details>
-          <summary><span class="num">2</span><h3>SEO<small>Клиенты приходят из поиска</small></h3></summary>
-          <div class="body"><div class="k">Что делаем</div><ul><li>Оптимизация</li><li>Структура</li><li>Статьи</li><li>Продвижение</li></ul><div class="rr"><b>Результат:</b> клиенты приходят из поиска.</div></div>
-        </details>
-        <details>
-          <summary><span class="num">3</span><h3>Яндекс.Директ<small>Стабильный поток заявок</small></h3></summary>
-          <div class="body"><div class="k">Что делаем</div><ul><li>Настройка рекламы</li><li>Аналитика</li><li>Тестирование</li></ul><div class="rr"><b>Результат:</b> стабильный поток заявок.</div></div>
-        </details>
-        <details>
-          <summary><span class="num">4</span><h3>Сообщество ВКонтакте<small>Профессиональный бренд</small></h3></summary>
-          <div class="body"><div class="k">Что делаем</div><ul><li>Оформление</li><li>Упаковка</li><li>Настройка</li></ul><div class="rr"><b>Результат:</b> профессиональное присутствие бренда.</div></div>
-        </details>
-        <details>
-          <summary><span class="num">5</span><h3>Реклама ВКонтакте<small>Новые обращения</small></h3></summary>
-          <div class="body"><div class="k">Что делаем</div><ul><li>Таргет</li><li>Аудитории</li><li>Тесты объявлений</li></ul><div class="rr"><b>Результат:</b> новые обращения.</div></div>
-        </details>
-        <details>
-          <summary><span class="num">6</span><h3>Telegram<small>Привлечение и удержание клиентов</small></h3></summary>
-          <div class="body"><div class="k">Что делаем</div><ul><li>Канал</li><li>Контент</li><li>Бот</li><li>Автоворонки</li></ul><div class="rr"><b>Результат:</b> система привлечения и удержания клиентов.</div></div>
-        </details>
-        <details>
-          <summary><span class="num">7</span><h3>MAX<small>Дополнительный источник трафика</small></h3></summary>
-          <div class="body"><div class="k">Что делаем</div><ul><li>Запуск присутствия</li><li>Контент</li><li>Развитие аудитории</li></ul><div class="rr"><b>Результат:</b> дополнительный источник трафика.</div></div>
-        </details>
-        <details>
-          <summary><span class="num">8</span><h3>Контент-завод<small>Контент без ежедневной рутины</small></h3></summary>
-          <div class="body"><div class="k">Что делаем</div><ul><li>Статьи</li><li>Посты</li><li>Контент-план</li><li>Генерация через ИИ</li></ul><div class="rr"><b>Результат:</b> регулярный экспертный контент без ежедневной рутины.</div></div>
-        </details>
+      <!-- A. Привлечение -->
+      <div class="svc-group">
+        <div class="svc-group-h"><h3>Привлечение клиентов</h3><span>приводим людей</span></div>
+        <div class="svc">
+          <details>
+            <summary><span class="num">1</span><h3>Сайт для юриста<small>Сайт начинает привлекать клиентов</small></h3></summary>
+            <div class="body"><div class="k">Что делаем</div><ul><li>Лендинг</li><li>Сайт услуг</li><li>Посадочные страницы</li></ul><div class="rr"><b>Результат:</b> сайт начинает привлекать клиентов.</div></div>
+          </details>
+          <details>
+            <summary><span class="num">2</span><h3>SEO<small>Клиенты приходят из поиска</small></h3></summary>
+            <div class="body"><div class="k">Что делаем</div><ul><li>Оптимизация</li><li>Структура</li><li>Статьи</li><li>Продвижение</li></ul><div class="rr"><b>Результат:</b> клиенты приходят из поиска.</div></div>
+          </details>
+          <details>
+            <summary><span class="num">3</span><h3>Яндекс.Директ<small>Стабильный поток заявок</small></h3></summary>
+            <div class="body"><div class="k">Что делаем</div><ul><li>Настройка рекламы</li><li>Аналитика</li><li>Тестирование</li></ul><div class="rr"><b>Результат:</b> стабильный поток заявок.</div></div>
+          </details>
+          <details>
+            <summary><span class="num">4</span><h3>Реклама ВКонтакте<small>Новые обращения</small></h3></summary>
+            <div class="body"><div class="k">Что делаем</div><ul><li>Таргет</li><li>Аудитории</li><li>Тесты объявлений</li></ul><div class="rr"><b>Результат:</b> новые обращения.</div></div>
+          </details>
+        </div>
+      </div>
+
+      <!-- B. Присутствие и доверие -->
+      <div class="svc-group">
+        <div class="svc-group-h"><h3>Присутствие и доверие</h3><span>чтобы вам доверяли</span></div>
+        <div class="svc">
+          <details>
+            <summary><span class="num">5</span><h3>Сообщество ВКонтакте<small>Профессиональный бренд</small></h3></summary>
+            <div class="body"><div class="k">Что делаем</div><ul><li>Оформление</li><li>Упаковка</li><li>Настройка</li></ul><div class="rr"><b>Результат:</b> профессиональное присутствие бренда.</div></div>
+          </details>
+          <details>
+            <summary><span class="num">6</span><h3>MAX<small>Дополнительный источник трафика</small></h3></summary>
+            <div class="body"><div class="k">Что делаем</div><ul><li>Запуск присутствия</li><li>Контент</li><li>Развитие аудитории</li></ul><div class="rr"><b>Результат:</b> дополнительный источник трафика.</div></div>
+          </details>
+        </div>
+      </div>
+
+      <!-- C. Контент и автоматизация -->
+      <div class="svc-group">
+        <div class="svc-group-h"><h3>Контент и автоматизация</h3><span>убираем рутину и удерживаем</span></div>
+        <div class="svc">
+          <details>
+            <summary><span class="num">7</span><h3>Telegram<small>Привлечение и удержание клиентов</small></h3></summary>
+            <div class="body"><div class="k">Что делаем</div><ul><li>Канал</li><li>Контент</li><li>Бот</li><li>Автоворонки</li></ul><div class="rr"><b>Результат:</b> система привлечения и удержания клиентов.</div></div>
+          </details>
+          <details>
+            <summary><span class="num">8</span><h3>Контент-завод<small>Контент без ежедневной рутины</small></h3></summary>
+            <div class="body"><div class="k">Что делаем</div><ul><li>Статьи</li><li>Посты</li><li>Контент-план</li><li>Генерация через ИИ</li></ul><div class="rr"><b>Результат:</b> регулярный экспертный контент без ежедневной рутины.</div></div>
+          </details>
+        </div>
       </div>
     </div>
   </section>
