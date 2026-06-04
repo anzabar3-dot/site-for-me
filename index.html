@@ -12,6 +12,7 @@
   --mute:  #6E6C66;
   --acc:   #0E7C66;
   --acc-d: #0A5E4D;
+  --warn:  #C0492B;
 
   width: 100%;
   background: var(--bg);
@@ -22,7 +23,7 @@
   text-rendering: optimizeLegibility;
   line-height: 1.6;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: clip;        /* безопасно для sticky-хедера */
 }
 
 .lw .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
@@ -43,19 +44,17 @@
 .lw .btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .lw .btn-solid { background: var(--ink); color: #fff !important; }
 .lw .btn-solid:hover { background: var(--ink-2); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(15,15,14,.22); }
-.lw .btn-out { background: transparent; color: var(--ink) !important; }
-.lw .btn-out:hover { background: var(--ink); color: #fff !important; transform: translateY(-2px); }
 .lw .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
-/* header */
-.lw .hd { border-bottom: 1px solid var(--line); background: var(--bg); }
-.lw .hd-in { max-width: 1180px; margin: 0 auto; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+/* sticky header */
+.lw .hd { position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.9); backdrop-filter: saturate(140%) blur(10px); -webkit-backdrop-filter: saturate(140%) blur(10px); }
+.lw .hd-in { max-width: 1180px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .lw .logo { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
 .lw .logo sup { font-size: 9px; vertical-align: super; color: var(--mute); }
-.lw .nav { display: none; gap: 30px; }
+.lw .nav { display: none; gap: 28px; }
 .lw .nav a { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink) !important; text-decoration: none; transition: color .2s; }
 .lw .nav a:hover { color: var(--acc) !important; }
-.lw .hd .btn { padding: 12px 20px; }
+.lw .hd .btn { padding: 11px 20px; }
 
 /* photo placeholder */
 .lw .ph { position: relative; background:
@@ -70,40 +69,85 @@
 .lw .hero { padding: 56px 0 64px; }
 .lw .hero-grid { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: center; }
 .lw .hero h1 { font-size: clamp(36px, 8vw, 66px); font-weight: 900; margin-bottom: 22px; }
-.lw .hero .lead { max-width: 470px; margin-bottom: 30px; font-size: 17px; }
+.lw .hero .lead { max-width: 500px; margin-bottom: 30px; font-size: 17px; }
 .lw .hero .ph { min-height: 380px; }
 
 /* section shell */
 .lw .sec { padding: 72px 0; }
 .lw .sec.band { background: var(--band); }
-.lw .sec-head { max-width: 760px; }
+.lw .sec-head { max-width: 820px; }
 .lw .sec-head.center { margin: 0 auto; text-align: center; }
-.lw .sec-title { font-size: clamp(27px, 4.4vw, 44px); }
+.lw .sec-title { font-size: clamp(26px, 4.2vw, 42px); }
 .lw .sec-head .lead { margin-top: 16px; }
 
-/* feature cards */
-.lw .cards { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 44px; }
-.lw .fcard { background: var(--band); border: 1px solid var(--line); border-radius: 14px; padding: 30px 26px; transition: transform .25s, box-shadow .3s; }
+/* feature cards (боли) */
+.lw .cards { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 40px; }
+.lw .fcard { background: var(--band); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; transition: transform .25s, box-shadow .3s; }
 .lw .sec.band .fcard { background: var(--bg); }
-.lw .fcard:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(15,15,14,.10); }
-.lw .sq { width: 50px; height: 50px; border-radius: 12px; background: var(--ink); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-.lw .sq svg { width: 22px; height: 22px; stroke: #fff; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.lw .fcard h3 { font-family: 'Archivo', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 17px; letter-spacing: 0.005em; margin-bottom: 10px; }
-.lw .fcard p { font-size: 14.5px; color: var(--mute); line-height: 1.6; }
+.lw .fcard:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(15,15,14,.09); }
+.lw .sq { width: 46px; height: 46px; border-radius: 12px; background: var(--band); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.lw .sq svg { width: 21px; height: 21px; stroke: var(--ink); stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.lw .fcard h3 { font-family: 'Archivo', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 16px; margin-bottom: 8px; }
+.lw .fcard p { font-size: 14px; color: var(--mute); line-height: 1.55; }
+.lw .after-cards { margin-top: 30px; font-size: 17px; font-weight: 600; color: var(--ink); }
 
-/* split feature */
-.lw .split { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: center; }
-.lw .split .h { font-size: clamp(26px, 4.2vw, 42px); margin-bottom: 18px; }
-.lw .split .lead { margin-bottom: 26px; }
-.lw .split.rev .ph { order: -1; }
+/* scroll hint */
+.lw .scrollhint { text-align: center; margin-top: 26px; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); }
+.lw .scrollhint svg { display: block; margin: 12px auto 0; width: 22px; height: 22px; stroke: var(--acc); stroke-width: 2; fill: none; animation: lw-bounce 1.6s ease-in-out infinite; }
+@keyframes lw-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
 
-/* steps */
-.lw .steps { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 44px; }
-.lw .step { display: grid; grid-template-columns: auto 1fr; gap: 22px; padding: 26px 0; border-top: 1px solid var(--line); }
-.lw .step:last-child { border-bottom: 1px solid var(--line); }
-.lw .step-n { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 28px; color: var(--acc); min-width: 56px; }
-.lw .step h3 { font-family: 'Archivo', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 17px; margin-bottom: 6px; }
-.lw .step p { font-size: 14.5px; color: var(--mute); line-height: 1.6; max-width: 640px; }
+/* scenarios (раскрывающиеся: проблема→цена→решение→результат) */
+.lw .scn { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 40px; }
+.lw .scn details { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 0 26px; transition: border-color .2s, box-shadow .25s; }
+.lw .sec.band .scn details { background: var(--bg); }
+.lw .scn details[open] { border-color: var(--ink); box-shadow: 0 16px 40px rgba(15,15,14,.08); }
+.lw .scn summary { list-style: none; cursor: pointer; padding: 26px 0; position: relative; }
+.lw .scn summary::-webkit-details-marker { display: none; }
+.lw .scn summary .pk { font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); display: block; margin-bottom: 8px; }
+.lw .scn summary h3 { font-family: 'Archivo', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; padding-right: 34px; line-height: 1.15; }
+.lw .scn summary::after { content: '+'; position: absolute; right: 0; top: 24px; font-size: 26px; font-weight: 400; color: var(--ink); }
+.lw .scn details[open] summary::after { content: '–'; }
+.lw .scn .lvl { padding: 14px 0; border-top: 1px solid var(--line); }
+.lw .scn .lvl:last-child { padding-bottom: 26px; }
+.lw .scn .lvl .k { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acc); margin-bottom: 4px; }
+.lw .scn .lvl.cost .k { color: var(--warn); }
+.lw .scn .lvl .v { font-size: 14.5px; color: var(--ink-2); line-height: 1.5; }
+
+/* services (раскрывающиеся) */
+.lw .svc { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 40px; }
+.lw .svc details { background: var(--band); border: 1px solid var(--line); border-radius: 16px; padding: 0 26px; transition: background .2s, border-color .2s, box-shadow .25s; }
+.lw .sec.band .svc details { background: var(--bg); }
+.lw .svc details[open] { border-color: var(--ink); box-shadow: 0 16px 40px rgba(15,15,14,.08); }
+.lw .svc summary { list-style: none; cursor: pointer; padding: 22px 0; display: flex; align-items: center; gap: 16px; position: relative; }
+.lw .svc summary::-webkit-details-marker { display: none; }
+.lw .svc .num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 15px; color: #fff; background: var(--ink); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.lw .svc summary h3 { font-family: 'Archivo', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 17px; line-height: 1.2; }
+.lw .svc summary h3 small { display: block; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 12.5px; text-transform: none; letter-spacing: 0; color: var(--mute); margin-top: 3px; }
+.lw .svc summary::after { content: '+'; position: absolute; right: 0; top: 22px; font-size: 26px; font-weight: 400; color: var(--ink); }
+.lw .svc details[open] summary::after { content: '–'; }
+.lw .svc .body { padding: 0 0 24px 52px; }
+.lw .svc .body .k { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acc); margin-bottom: 10px; }
+.lw .svc .body ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.lw .svc .body li { font-size: 13px; color: var(--ink-2); background: var(--bg); border: 1px solid var(--line); border-radius: 100px; padding: 7px 14px; }
+.lw .svc .body .rr { font-size: 14.5px; color: var(--ink-2); line-height: 1.5; }
+.lw .svc .body .rr b { color: var(--acc); font-weight: 600; }
+
+/* cases (До → Что сделали → После) */
+.lw .case3 { display: grid; grid-template-columns: 1fr; margin-top: 40px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.lw .c3 { padding: 28px 26px; border-top: 1px solid var(--line); }
+.lw .c3:first-child { border-top: none; }
+.lw .c3.mid { background: var(--band); }
+.lw .c3 .lab { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px; display: inline-block; }
+.lw .c3.before .lab { color: var(--warn); }
+.lw .c3.mid .lab { color: var(--ink); }
+.lw .c3.after .lab { color: var(--acc); }
+.lw .c3 ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.lw .c3 li { font-size: 14px; line-height: 1.5; color: var(--ink-2); padding-left: 22px; position: relative; }
+.lw .c3 li::before { position: absolute; left: 0; font-weight: 700; }
+.lw .c3.before li { color: var(--mute); } .lw .c3.before li::before { content: '✕'; color: var(--warn); }
+.lw .c3.mid li::before { content: '→'; color: var(--ink); }
+.lw .c3.after li::before { content: '✓'; color: var(--acc); }
+.lw .case-note { font-size: 11px; color: #A8A59C; margin-top: 16px; }
 
 /* form */
 .lw .form-wrap { max-width: 540px; margin: 40px auto 0; background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 30px 26px; box-shadow: 0 24px 60px rgba(15,15,14,.08); }
@@ -113,8 +157,8 @@
 .lw .field input { width: 100%; background: var(--band); border: 1.5px solid var(--line); border-radius: 10px; padding: 14px 16px; font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink); outline: none; transition: border-color .2s, box-shadow .2s; -webkit-appearance: none; }
 .lw .field input::placeholder { color: #A8A59C; }
 .lw .field input:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(15,15,14,.08); background: var(--bg); }
-.lw .field.invalid input { border-color: #C0492B; box-shadow: 0 0 0 3px rgba(192,73,43,.1); }
-.lw .field-err { font-size: 11.5px; color: #C0492B; margin-top: 4px; display: none; font-weight: 500; text-align: left; }
+.lw .field.invalid input { border-color: var(--warn); box-shadow: 0 0 0 3px rgba(192,73,43,.1); }
+.lw .field-err { font-size: 11.5px; color: var(--warn); margin-top: 4px; display: none; font-weight: 500; text-align: left; }
 .lw .field.invalid .field-err { display: block; }
 .lw .submit { width: 100%; background: var(--ink); color: #fff; border: none; border-radius: 10px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background .2s, transform .2s; }
 .lw .submit:hover { background: var(--ink-2); transform: translateY(-2px); }
@@ -140,81 +184,11 @@
 .lw .ft-links a:hover { color: #fff !important; }
 .lw .ft-bottom { border-top: 1px solid rgba(255,255,255,.14); margin-top: 36px; padding-top: 24px; font-size: 12.5px; color: rgba(255,255,255,.45); }
 
-/* ── helpers (та же стилистика) ── */
-.lw .sq.soft { background: var(--band); border: 1px solid var(--line); }
-.lw .sq.soft svg { stroke: var(--ink); }
-.lw .fcard.cost { border-left: 3px solid var(--ink); }
-@media (min-width: 720px) { .lw .cards.g2 { grid-template-columns: repeat(2, 1fr); } }
-
-/* insight */
-.lw .insight { background: var(--ink); color: #fff; text-align: center; }
-.lw .insight .q { font-family: 'Archivo', sans-serif; font-weight: 800; text-transform: uppercase; font-size: clamp(23px, 3.6vw, 40px); line-height: 1.18; letter-spacing: -0.01em; max-width: 900px; margin: 0 auto; color: #fff; }
-.lw .insight .q em { font-style: normal; color: #7FD4BE; }
-.lw .insight .sm { color: rgba(255,255,255,.6); margin-top: 20px; font-size: 15px; }
-
-/* products slider */
-.lw .slider { margin-top: 44px; }
-.lw .track { display: grid; grid-auto-flow: column; grid-auto-columns: 84%; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 6px; scrollbar-width: none; }
-.lw .track::-webkit-scrollbar { display: none; }
-.lw .pcard { scroll-snap-align: start; background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px; display: flex; flex-direction: column; }
-.lw .pcard .sq { margin-bottom: 18px; }
-.lw .pcard h3 { font-family: 'Archivo', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin-bottom: 14px; }
-.lw .prow { padding: 13px 0; border-top: 1px solid var(--line); }
-.lw .prow .k { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acc); margin-bottom: 4px; }
-.lw .prow .v { font-size: 14px; color: var(--ink-2); line-height: 1.5; }
-.lw .sl-nav { display: flex; gap: 10px; margin-top: 24px; }
-.lw .sl-nav button { width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--ink); background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .2s; }
-.lw .sl-nav button:hover { background: var(--ink); }
-.lw .sl-nav button svg { width: 18px; height: 18px; stroke: var(--ink); stroke-width: 2; fill: none; }
-.lw .sl-nav button:hover svg { stroke: #fff; }
-@media (min-width: 720px) { .lw .track { grid-auto-columns: 45%; } }
-@media (min-width: 980px) { .lw .track { grid-auto-columns: 31.5%; } }
-
-/* До / После */
-.lw .compare { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 40px; }
-@media (min-width: 720px) { .lw .compare { grid-template-columns: 1fr 1fr; } }
-.lw .cc { border: 1px solid var(--line); border-radius: 14px; padding: 28px 26px; background: var(--bg); }
-.lw .cc.after { background: var(--ink); border-color: var(--ink); }
-.lw .cc .lab { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px; display: inline-block; }
-.lw .cc.before .lab { color: var(--mute); }
-.lw .cc.after .lab { color: #7FD4BE; }
-.lw .cc ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.lw .cc li { font-size: 14.5px; line-height: 1.5; padding-left: 26px; position: relative; }
-.lw .cc.before li { color: var(--mute); }
-.lw .cc.before li::before { content: '✕'; position: absolute; left: 0; color: #C0492B; font-weight: 700; }
-.lw .cc.after li { color: rgba(255,255,255,.92); }
-.lw .cc.after li::before { content: '✓'; position: absolute; left: 0; color: #7FD4BE; font-weight: 700; }
-.lw .metrics { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 18px; }
-@media (min-width: 560px) { .lw .metrics { grid-template-columns: repeat(3, 1fr); } }
-.lw .metric { background: var(--band); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
-.lw .metric .mv { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 22px; color: var(--ink); }
-.lw .metric .ml { font-size: 12.5px; color: var(--mute); margin-top: 6px; line-height: 1.4; }
-
-/* flow (5 шагов) */
-.lw .flow { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 44px; }
-.lw .fstep { display: grid; grid-template-columns: auto 1fr; gap: 20px; padding: 22px 0; border-top: 1px solid var(--line); align-items: flex-start; }
-.lw .fstep:last-child { border-bottom: 1px solid var(--line); }
-.lw .fn { width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; flex-shrink: 0; }
-.lw .fstep h3 { font-family: 'Archivo', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 16px; margin-bottom: 5px; }
-.lw .fstep p { font-size: 14px; color: var(--mute); line-height: 1.55; }
-@media (min-width: 980px) {
-  .lw .flow { grid-template-columns: repeat(5, 1fr); gap: 24px; }
-  .lw .fstep { grid-template-columns: 1fr; border: none; padding: 0; gap: 14px; }
-}
-
-/* about / trust */
-.lw .about { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: center; margin-top: 8px; }
-.lw .about .ph { min-height: 340px; }
-.lw .about h2 { margin-bottom: 18px; }
-.lw .about .lead { margin-bottom: 22px; }
-.lw .ab-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-.lw .ab-tags span { font-size: 13px; font-weight: 600; border: 1px solid var(--line); border-radius: 100px; padding: 9px 16px; background: var(--bg); }
-.lw .sec.band .ab-tags span { background: var(--bg); }
-@media (min-width: 820px) { .lw .about { grid-template-columns: 0.8fr 1.2fr; gap: 48px; } }
-
 /* ════ TABLET ≥ 720 ════ */
 @media (min-width: 720px) {
   .lw .cards { grid-template-columns: repeat(3, 1fr); }
+  .lw .scn { grid-template-columns: repeat(3, 1fr); }
+  .lw .svc { grid-template-columns: 1fr 1fr; }
 }
 
 /* ════ DESKTOP ≥ 980 ════ */
@@ -223,22 +197,22 @@
   .lw .hero { padding: 80px 0 90px; }
   .lw .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 56px; }
   .lw .sec { padding: 96px 0; }
-  .lw .split { grid-template-columns: 1fr 1fr; gap: 56px; }
-  .lw .split .ph { min-height: 420px; }
-  .lw .steps { grid-template-columns: 1fr 1fr; gap: 0 56px; }
+  .lw .case3 { grid-template-columns: repeat(3, 1fr); }
+  .lw .c3 { border-top: none; border-left: 1px solid var(--line); }
+  .lw .c3:first-child { border-left: none; }
 }
 </style>
 
 <div class="lw" id="lw-root">
 
-  <!-- HEADER -->
+  <!-- HEADER (sticky) -->
   <header class="hd">
     <div class="hd-in">
       <a href="#lw-top" class="logo lw-scroll">ВАШ БРЕНД<sup>™</sup></a>
       <nav class="nav">
-        <a href="#problem" class="lw-scroll">Проблема</a>
-        <a href="#solution" class="lw-scroll">Решение</a>
-        <a href="#products" class="lw-scroll">Продукты</a>
+        <a href="#problem" class="lw-scroll">Проблемы</a>
+        <a href="#scenarios" class="lw-scroll">Решения</a>
+        <a href="#services" class="lw-scroll">Услуги</a>
         <a href="#cases" class="lw-scroll">Кейсы</a>
       </nav>
       <a href="#lead" class="btn btn-solid lw-scroll">Связаться</a>
@@ -252,11 +226,10 @@
         <div>
           <span class="eyebrow">Для бьюти-юристов</span>
           <h1 class="h">Освобождаю <em>до 80%</em> времени от рутины</h1>
-          <p class="lead">Внедряю ИИ в практику бьюти-юристов и снимаю с вас рутинные задачи — заявки, переписки, документы. Первые результаты — через 2 месяца.</p>
+          <p class="lead">Внедряю ИИ в практику бьюти-юристов и снимаю с вас рутинные задачи — заявки, переписки, документы, контент и трафик.</p>
           <div class="btn-row">
             <a href="#lead" class="btn btn-solid lw-scroll">Связаться со мной
               <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a href="#problem" class="btn btn-out lw-scroll">Узнаёте себя?</a>
           </div>
         </div>
         <div class="ph">
@@ -269,247 +242,177 @@
     </div>
   </section>
 
-  <!-- 1. ПРОБЛЕМА -->
+  <!-- БОЛИ -->
   <section class="sec" id="problem">
     <div class="wrap">
-      <div class="sec-head center">
-        <span class="eyebrow">Знакомо?</span>
-        <h2 class="h sec-title">Ваш день съедает не работа, а рутина</h2>
-        <p class="lead">Если узнаёте себя хотя бы в трёх пунктах — дело не в вас. Просто процессы держатся на ручном труде.</p>
+      <div class="sec-head">
+        <span class="eyebrow">Наблюдение из практики</span>
+        <h2 class="h sec-title">За годы работы я вижу одни и те же проблемы почти у каждого юриста</h2>
       </div>
       <div class="cards">
         <div class="fcard">
-          <div class="sq soft"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
-          <h3>Одни и те же вопросы</h3>
-          <p>Постоянно отвечаете на одно и то же — вручную, по десятому кругу.</p>
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+          <h3>Одни и те же вопросы клиентов</h3>
+          <p>Отвечаете на одно и то же вручную, по десятому кругу.</p>
         </div>
         <div class="fcard">
-          <div class="sq soft"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 11h5l2 3h2l2-3h5"/></svg></div>
-          <h3>Заявки приходят хаотично</h3>
-          <p>Обращения сыплются из разных каналов, теряются и забываются.</p>
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.3 7.3L3 21l1.7-6.7A8 8 0 1 1 21 12z"/></svg></div>
+          <h3>Постоянные переписки</h3>
+          <p>Мессенджеры не замолкают и держат вас «на крючке» весь день.</p>
         </div>
         <div class="fcard">
-          <div class="sq soft"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <h3>Консультации съедают время</h3>
-          <p>Повторяющиеся разборы и созвоны занимают часы, которых и так нет.</p>
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/></svg></div>
+          <h3>Ручная работа с документами</h3>
+          <p>Каждый шаблон заполняете руками — время и риск ошибок.</p>
         </div>
-        <div class="fcard">
-          <div class="sq soft"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/></svg></div>
-          <h3>Документы — вручную</h3>
-          <p>Каждый шаблон заполняете руками, теряя время и допуская ошибки.</p>
-        </div>
-        <div class="fcard">
-          <div class="sq soft"><svg viewBox="0 0 24 24"><path d="M21 12.8A8 8 0 1 1 11.2 3a6 6 0 0 0 9.8 9.8z"/></svg></div>
-          <h3>Вечера и выходные в работе</h3>
-          <p>Доделываете задачи поздно вечером и в выходные, потому что иначе не успеть.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2. ЦЕНА БЕЗДЕЙСТВИЯ -->
-  <section class="sec band" id="cost">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Цена бездействия</span>
-        <h2 class="h sec-title">Во что обходится работа вручную</h2>
-        <p class="lead">Ручные процессы кажутся бесплатными — но платите за них вы. Каждый день: временем, деньгами и силами.</p>
-      </div>
-      <div class="cards g2">
-        <div class="fcard cost"><h3>Потерянные заявки</h3><p>Не ответили вовремя — клиент ушёл к тому, кто ответил быстрее. Вы об этом даже не узнаёте.</p></div>
-        <div class="fcard cost"><h3>Выгорание</h3><p>Когда всё держится на вас вручную, усталость копится, а удовольствие от работы уходит.</p></div>
-        <div class="fcard cost"><h3>Нет времени на развитие</h3><p>Операционка съедает день — на рост, обучение и новые услуги ресурса не остаётся.</p></div>
-        <div class="fcard cost"><h3>Доход упирается в ваше время</h3><p>Больше клиентов — больше ручной работы. Заработок ограничен числом ваших часов.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. ИНСАЙТ -->
-  <section class="sec insight">
-    <div class="wrap">
-      <p class="q">Кажется, что нужен <em>помощник</em>.<br>На самом деле сначала нужно убрать <em>рутину</em>.</p>
-      <p class="sm">Нанять человека на хаос — значит платить за хаос. Сначала наводим порядок в процессах.</p>
-    </div>
-  </section>
-
-  <!-- 4. РЕШЕНИЕ ПРОСТЫМ ЯЗЫКОМ -->
-  <section class="sec" id="solution">
-    <div class="wrap">
-      <div class="sec-head center">
-        <span class="eyebrow">Как это решается</span>
-        <h2 class="h sec-title">Часть работы начинает выполняться сама</h2>
-        <p class="lead">Никаких сложных технологий с вашей стороны. Просто часть процессов перестаёт зависеть от вашего ручного участия — и время возвращается вам.</p>
-      </div>
-      <div class="cards g2">
         <div class="fcard">
           <div class="sq"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 11h5l2 3h2l2-3h5"/></svg></div>
-          <h3>Заявки собираются автоматически</h3>
-          <p>Все обращения из разных каналов попадают в одно место — ничего не теряется.</p>
+          <h3>Хаотичный поток заявок</h3>
+          <p>Обращения из разных каналов теряются и забываются.</p>
         </div>
         <div class="fcard">
-          <div class="sq"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.3 7.3L3 21l1.7-6.7A8 8 0 1 1 21 12z"/><path d="M9 11.5l2 2 4-4"/></svg></div>
-          <h3>Клиент получает ответ быстрее</h3>
-          <p>На частые вопросы ответ приходит сразу — в любое время, без вашего участия.</p>
+          <div class="sq"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>Нет времени на развитие</h3>
+          <p>Операционка съедает день — на рост ресурса не остаётся.</p>
         </div>
         <div class="fcard">
-          <div class="sq"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M9 13l2 2 4-4"/></svg></div>
-          <h3>Документы готовятся быстрее</h3>
-          <p>Типовые документы собираются по шаблонам за секунды вместо ручного заполнения.</p>
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M21 12.8A8 8 0 1 1 11.2 3a6 6 0 0 0 9.8 9.8z"/></svg></div>
+          <h3>Выгорание</h3>
+          <p>Когда всё держится на вас вручную, усталость копится.</p>
         </div>
-        <div class="fcard">
-          <div class="sq"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
-          <h3>Повторяющиеся действия исчезают</h3>
-          <p>Рутинные шаги выполняются сами — вы занимаетесь только тем, что важно.</p>
-        </div>
+      </div>
+      <p class="after-cards">Именно эти задачи я помогаю решить.</p>
+      <div class="scrollhint">Листайте дальше
+        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
       </div>
     </div>
   </section>
 
-  <!-- 5. ПРОДУКТЫ (слайдер) -->
-  <section class="sec band" id="products">
+  <!-- ПРОБЛЕМА → ЦЕНА → РЕШЕНИЕ → РЕЗУЛЬТАТ -->
+  <section class="sec band" id="scenarios">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">Что я внедряю</span>
-        <h2 class="h sec-title">Инструменты под вашу практику</h2>
-        <p class="lead">Подключаем по одному или вместе — начинаем с того, что забирает больше всего времени. Листайте →</p>
+        <span class="eyebrow">Как я это решаю</span>
+        <h2 class="h sec-title">Что стоит за каждой проблемой — и чем я её закрываю</h2>
+        <p class="lead">Нажмите на проблему, чтобы увидеть, во что она обходится и каким инструментом решается.</p>
       </div>
-      <div class="slider">
-        <div class="track" id="lw-track">
-          <div class="pcard">
-            <div class="sq"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h6M8 17h4"/></svg></div>
-            <h3>Контент-завод</h3>
-            <div class="prow"><div class="k">Что делает</div><div class="v">Готовит контент для соцсетей и блога пачками, по плану.</div></div>
-            <div class="prow"><div class="k">Проблема</div><div class="v">Нет времени вести соцсети — нет входящих обращений.</div></div>
-            <div class="prow"><div class="k">Результат</div><div class="v">Регулярный контент без вашего ежедневного участия.</div></div>
-          </div>
-          <div class="pcard">
-            <div class="sq"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M5 21a7 7 0 0 1 14 0"/><path d="M15 8l1.5 1.5L19 7"/></svg></div>
-            <h3>AI-помощник юриста</h3>
-            <div class="prow"><div class="k">Что делает</div><div class="v">Отвечает на типовые вопросы и помогает с черновиками.</div></div>
-            <div class="prow"><div class="k">Проблема</div><div class="v">Одни и те же вопросы и переписки вручную.</div></div>
-            <div class="prow"><div class="k">Результат</div><div class="v">Быстрые ответы клиентам и меньше рутины у вас.</div></div>
-          </div>
-          <div class="pcard">
-            <div class="sq"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 11h5l2 3h2l2-3h5"/></svg></div>
-            <h3>Автоматизация заявок</h3>
-            <div class="prow"><div class="k">Что делает</div><div class="v">Собирает обращения из всех каналов в одном месте.</div></div>
-            <div class="prow"><div class="k">Проблема</div><div class="v">Заявки приходят хаотично и теряются.</div></div>
-            <div class="prow"><div class="k">Результат</div><div class="v">Ни одна заявка не теряется, всё под контролем.</div></div>
-          </div>
-          <div class="pcard">
-            <div class="sq"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 12h8M8 16h5"/></svg></div>
-            <h3>База знаний</h3>
-            <div class="prow"><div class="k">Что делает</div><div class="v">Хранит ваши шаблоны, ответы и документы в одном месте.</div></div>
-            <div class="prow"><div class="k">Проблема</div><div class="v">Всё в голове и в переписках — время уходит на поиск.</div></div>
-            <div class="prow"><div class="k">Результат</div><div class="v">Быстрый доступ и единый стандарт ответов.</div></div>
-          </div>
-          <div class="pcard">
-            <div class="sq"><svg viewBox="0 0 24 24"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/></svg></div>
-            <h3>Telegram-бот</h3>
-            <div class="prow"><div class="k">Что делает</div><div class="v">Принимает заявки и отвечает клиентам прямо в Telegram.</div></div>
-            <div class="prow"><div class="k">Проблема</div><div class="v">Мессенджеры не замолкают, ответы — только вручную.</div></div>
-            <div class="prow"><div class="k">Результат</div><div class="v">Клиент получает ответ мгновенно, в любое время.</div></div>
-          </div>
-        </div>
-        <div class="sl-nav">
-          <button type="button" data-dir="prev" aria-label="Назад"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
-          <button type="button" data-dir="next" aria-label="Вперёд"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
-        </div>
+      <div class="scn">
+        <details open>
+          <summary><span class="pk">Проблема</span><h3>Одни и те же вопросы клиентов</h3></summary>
+          <div class="lvl cost"><div class="k">Цена</div><div class="v">Тратите часы на одинаковые ответы.</div></div>
+          <div class="lvl"><div class="k">Решение</div><div class="v">AI-помощник отвечает на типовые вопросы автоматически.</div></div>
+          <div class="lvl"><div class="k">Результат</div><div class="v">Клиент получает ответ мгновенно, а у вас — свободные часы.</div></div>
+        </details>
+        <details>
+          <summary><span class="pk">Проблема</span><h3>Хаотичные заявки</h3></summary>
+          <div class="lvl cost"><div class="k">Цена</div><div class="v">Теряются обращения и деньги.</div></div>
+          <div class="lvl"><div class="k">Решение</div><div class="v">Telegram-бот и автоворонка собирают заявки автоматически.</div></div>
+          <div class="lvl"><div class="k">Результат</div><div class="v">Ни одна заявка не теряется — всё в одном месте.</div></div>
+        </details>
+        <details>
+          <summary><span class="pk">Проблема</span><h3>Нет времени на контент</h3></summary>
+          <div class="lvl cost"><div class="k">Цена</div><div class="v">Низкая узнаваемость и мало входящих заявок.</div></div>
+          <div class="lvl"><div class="k">Решение</div><div class="v">Контент-завод создаёт публикации автоматически.</div></div>
+          <div class="lvl"><div class="k">Результат</div><div class="v">Регулярный экспертный контент и больше обращений.</div></div>
+        </details>
       </div>
     </div>
   </section>
 
-  <!-- 6. КЕЙСЫ (До / После) -->
-  <section class="sec" id="cases">
+  <!-- УСЛУГИ -->
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Что я делаю</span>
+        <h2 class="h sec-title">Конкретные инструменты под вашу практику</h2>
+        <p class="lead">Подключаем по одному или вместе. Нажмите, чтобы раскрыть состав и результат.</p>
+      </div>
+      <div class="svc">
+        <details>
+          <summary><span class="num">1</span><h3>Сайт для юриста<small>Сайт начинает привлекать клиентов</small></h3></summary>
+          <div class="body"><div class="k">Что делаем</div><ul><li>Лендинг</li><li>Сайт услуг</li><li>Посадочные страницы</li></ul><div class="rr"><b>Результат:</b> сайт начинает привлекать клиентов.</div></div>
+        </details>
+        <details>
+          <summary><span class="num">2</span><h3>SEO<small>Клиенты приходят из поиска</small></h3></summary>
+          <div class="body"><div class="k">Что делаем</div><ul><li>Оптимизация</li><li>Структура</li><li>Статьи</li><li>Продвижение</li></ul><div class="rr"><b>Результат:</b> клиенты приходят из поиска.</div></div>
+        </details>
+        <details>
+          <summary><span class="num">3</span><h3>Яндекс.Директ<small>Стабильный поток заявок</small></h3></summary>
+          <div class="body"><div class="k">Что делаем</div><ul><li>Настройка рекламы</li><li>Аналитика</li><li>Тестирование</li></ul><div class="rr"><b>Результат:</b> стабильный поток заявок.</div></div>
+        </details>
+        <details>
+          <summary><span class="num">4</span><h3>Сообщество ВКонтакте<small>Профессиональный бренд</small></h3></summary>
+          <div class="body"><div class="k">Что делаем</div><ul><li>Оформление</li><li>Упаковка</li><li>Настройка</li></ul><div class="rr"><b>Результат:</b> профессиональное присутствие бренда.</div></div>
+        </details>
+        <details>
+          <summary><span class="num">5</span><h3>Реклама ВКонтакте<small>Новые обращения</small></h3></summary>
+          <div class="body"><div class="k">Что делаем</div><ul><li>Таргет</li><li>Аудитории</li><li>Тесты объявлений</li></ul><div class="rr"><b>Результат:</b> новые обращения.</div></div>
+        </details>
+        <details>
+          <summary><span class="num">6</span><h3>Telegram<small>Привлечение и удержание клиентов</small></h3></summary>
+          <div class="body"><div class="k">Что делаем</div><ul><li>Канал</li><li>Контент</li><li>Бот</li><li>Автоворонки</li></ul><div class="rr"><b>Результат:</b> система привлечения и удержания клиентов.</div></div>
+        </details>
+        <details>
+          <summary><span class="num">7</span><h3>MAX<small>Дополнительный источник трафика</small></h3></summary>
+          <div class="body"><div class="k">Что делаем</div><ul><li>Запуск присутствия</li><li>Контент</li><li>Развитие аудитории</li></ul><div class="rr"><b>Результат:</b> дополнительный источник трафика.</div></div>
+        </details>
+        <details>
+          <summary><span class="num">8</span><h3>Контент-завод<small>Контент без ежедневной рутины</small></h3></summary>
+          <div class="body"><div class="k">Что делаем</div><ul><li>Статьи</li><li>Посты</li><li>Контент-план</li><li>Генерация через ИИ</li></ul><div class="rr"><b>Результат:</b> регулярный экспертный контент без ежедневной рутины.</div></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- КЕЙСЫ -->
+  <section class="sec band" id="cases">
     <div class="wrap">
       <div class="sec-head center">
         <span class="eyebrow">Кейсы</span>
-        <h2 class="h sec-title">Было / стало</h2>
-        <p class="lead">Так меняется обычный день юриста, когда рутина перестаёт держаться на ручном труде.</p>
+        <h2 class="h sec-title">До → что сделали → после</h2>
+        <p class="lead">Реальные результаты в цифрах. Заполним по вашим кейсам после запуска.</p>
       </div>
-      <div class="compare">
-        <div class="cc before">
-          <span class="lab">До</span>
+      <div class="case3">
+        <div class="c3 before">
+          <span class="lab">Было</span>
           <ul>
-            <li>Заявки теряются между мессенджерами</li>
-            <li>Одни и те же вопросы — вручную, по кругу</li>
-            <li>Ответы клиентам только в рабочее время</li>
-            <li>Документы заполняются руками</li>
-            <li>Вечера и выходные уходят на операционку</li>
+            <li>Заявки терялись между каналами</li>
+            <li>Ответы клиентам — вручную</li>
+            <li>Контента нет, входящих мало</li>
+            <li>Время на заявку: — </li>
           </ul>
         </div>
-        <div class="cc after">
-          <span class="lab">После</span>
+        <div class="c3 mid">
+          <span class="lab">Что сделали</span>
           <ul>
-            <li>Все обращения собраны в одном месте</li>
-            <li>Частые вопросы закрываются автоматически</li>
-            <li>Клиент получает ответ сразу, в любое время</li>
-            <li>Документы готовятся по шаблонам за секунды</li>
-            <li>Вечера и выходные — снова ваши</li>
+            <li>Собрали сайт и посадочные</li>
+            <li>Подключили Telegram-бот и автоворонку</li>
+            <li>Запустили контент-завод</li>
+            <li>Настроили рекламу</li>
+          </ul>
+        </div>
+        <div class="c3 after">
+          <span class="lab">Стало</span>
+          <ul>
+            <li>Заявки в одном месте</li>
+            <li>Ответ клиенту — мгновенно</li>
+            <li>Регулярный контент и рост входящих</li>
+            <li>До 80% времени освобождается</li>
           </ul>
         </div>
       </div>
-      <div class="metrics">
-        <div class="metric"><div class="mv">— → —</div><div class="ml">время на обработку заявки</div></div>
-        <div class="metric"><div class="mv">— → —</div><div class="ml">скорость ответа клиенту</div></div>
-        <div class="metric"><div class="mv">до 80%</div><div class="ml">времени освобождается</div></div>
-      </div>
-      <div class="ph-note" style="font-size:11px;color:#A8A59C;margin-top:16px;">Точные цифры добавим после первого кейса.</div>
+      <div class="case-note">Цифры — плейсхолдеры. Добавим реальные показатели после первого кейса.</div>
     </div>
   </section>
 
-  <!-- 7. КАК ПРОХОДИТ РАБОТА -->
-  <section class="sec band" id="how">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Как проходит работа</span>
-        <h2 class="h sec-title">Пять понятных шагов</h2>
-        <p class="lead">Без сложных терминов и техники с вашей стороны — вы видите результат на каждом этапе.</p>
-      </div>
-      <div class="flow">
-        <div class="fstep"><span class="fn">1</span><div><h3>Аудит</h3><p>Смотрю ваш рабочий день и нахожу, где теряются время и клиенты.</p></div></div>
-        <div class="fstep"><span class="fn">2</span><div><h3>План</h3><p>Показываю, что автоматизировать в первую очередь и какой будет результат.</p></div></div>
-        <div class="fstep"><span class="fn">3</span><div><h3>Настройка</h3><p>Собираю инструменты под вашу практику и процессы.</p></div></div>
-        <div class="fstep"><span class="fn">4</span><div><h3>Внедрение</h3><p>Запускаем в работу, обучаю пользоваться — без стресса для вас.</p></div></div>
-        <div class="fstep"><span class="fn">5</span><div><h3>Сопровождение</h3><p>Поддерживаю и улучшаю, чтобы система работала стабильно.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8. ДОВЕРИЕ / ОБО МНЕ -->
-  <section class="sec" id="about">
-    <div class="wrap">
-      <div class="about">
-        <div class="ph">
-          <div class="ph-in">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            <span>Фото — добавим позже</span>
-          </div>
-        </div>
-        <div>
-          <span class="eyebrow">Почему мне можно доверять</span>
-          <h2 class="h sec-title">Имя Фамилия</h2>
-          <p class="lead">Помогаю юристам убирать рутину и внедрять автоматизацию в практику. Специализируюсь именно на юридической нише — знаю ваши процессы, клиентов и задачи, поэтому решения получаются рабочими, а не «общими».</p>
-          <div class="ab-tags">
-            <span>Специализация на юристах</span>
-            <span>Узкие ниши</span>
-            <span>Автоматизация под ключ</span>
-            <span>На связи до результата</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 9. CTA + ФОРМА -->
-  <section class="sec band" id="lead">
+  <!-- CTA + ФОРМА -->
+  <section class="sec" id="lead">
     <div class="wrap">
       <div class="sec-head center">
         <span class="eyebrow">Следующий шаг</span>
         <h2 class="h sec-title">Свяжитесь со мной</h2>
-        <p class="lead">Расскажите о своей практике — посмотрю ваши процессы и подскажу, что можно убрать из ручной работы в первую очередь. Без обязательств.</p>
+        <p class="lead">Расскажите о своей практике — посмотрю процессы и подскажу, что можно убрать из ручной работы и чем усилить поток клиентов. Без обязательств.</p>
       </div>
-
       <div class="form-wrap" id="lw-form-wrap">
         <div id="lw-form-body">
           <h3>Написать мне</h3>
@@ -533,7 +436,7 @@
               <span>Согласен(на) на обработку персональных данных и связь по указанным контактам</span>
             </label>
             <div class="field-err" id="lw-consent-err" style="margin:-6px 0 10px;">Необходимо ваше согласие</div>
-            <button type="submit" class="submit">Связаться
+            <button type="submit" class="submit">Связаться со мной
               <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           </form>
           <div class="form-micro">Сообщение придёт на почту и в Telegram</div>
@@ -553,14 +456,14 @@
       <div class="ft-grid">
         <div>
           <a href="#lw-top" class="logo lw-scroll">ВАШ БРЕНД<sup>™</sup></a>
-          <div class="ft-c">Меньше рутины — больше практики.<br>Автоматизация для юристов в узких нишах</div>
+          <div class="ft-c">Маркетинг и автоматизация<br>для юристов в узких нишах</div>
         </div>
         <div>
           <h4>Навигация</h4>
           <div class="ft-links">
-            <a href="#problem" class="lw-scroll">Проблема</a>
-            <a href="#solution" class="lw-scroll">Решение</a>
-            <a href="#products" class="lw-scroll">Продукты</a>
+            <a href="#problem" class="lw-scroll">Проблемы</a>
+            <a href="#scenarios" class="lw-scroll">Решения</a>
+            <a href="#services" class="lw-scroll">Услуги</a>
             <a href="#cases" class="lw-scroll">Кейсы</a>
             <a href="#lead" class="lw-scroll">Связаться</a>
           </div>
@@ -583,10 +486,10 @@
 <script>
 (function () {
   /* ════════ НАСТРОЙКИ ════════ */
-  var EMAIL          = '';   // ← ваш email для заявок (mailto)
-  var TG_TOKEN       = '';   // ← токен Telegram-бота (виден в коде страницы; лучше отдельный бот)
-  var TG_CHAT_ID     = '';   // ← chat_id, куда падают заявки
-  var EMAIL_ENDPOINT = '';   // ← необяз.: URL формы-релея (Formspree) для авто-письма
+  var EMAIL          = '';   // ← ваш email (mailto)
+  var TG_TOKEN       = '';   // ← токен Telegram-бота
+  var TG_CHAT_ID     = '';   // ← chat_id для заявок
+  var EMAIL_ENDPOINT = '';   // ← необяз.: URL формы-релея (Formspree)
   /* Пока пусто — форма показывает «Сообщение отправлено» (демо). */
   /* ═══════════════════════════ */
 
@@ -594,26 +497,18 @@
   if (!root) return;
   try { document.getElementById('lw-year').textContent = String(new Date().getFullYear()); } catch (e) {}
 
-  /* плавный скролл по якорям */
+  /* плавный скролл с учётом высоты sticky-хедера */
+  var hd = root.querySelector('.hd');
   root.querySelectorAll('.lw-scroll').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var id = (a.getAttribute('href') || '').replace('#', '');
       var t = id && document.getElementById(id);
       if (!t) return;
       e.preventDefault();
-      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var off = (hd ? hd.getBoundingClientRect().height : 0) + 8;
+      var y = t.getBoundingClientRect().top + window.pageYOffset - off;
+      window.scrollTo({ top: y < 0 ? 0 : y, behavior: 'smooth' });
     });
-  });
-
-  /* слайдер продуктов */
-  root.querySelectorAll('.slider').forEach(function (sl) {
-    var track = sl.querySelector('.track');
-    if (!track) return;
-    function stepSize() { var c = track.querySelector('.pcard'); return c ? c.getBoundingClientRect().width + 16 : 320; }
-    var prev = sl.querySelector('[data-dir="prev"]');
-    var next = sl.querySelector('[data-dir="next"]');
-    if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -stepSize(), behavior: 'smooth' }); });
-    if (next) next.addEventListener('click', function () { track.scrollBy({ left: stepSize(), behavior: 'smooth' }); });
   });
 
   /* форма */
