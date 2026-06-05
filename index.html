@@ -210,6 +210,13 @@
 .lw .svc-group-h::after { content: ''; flex: 1; height: 1px; background: var(--line); }
 .lw .svc-group .svc { margin-top: 20px; }
 @media (max-width: 520px) { .lw .svc-group-h span { display: none; } }
+
+/* услуги: подробные карточки (4 поля) */
+.lw .svc .body .trow { padding: 13px 0; border-top: 1px solid var(--line); }
+.lw .svc .body .trow:first-child { padding-top: 0; border-top: none; }
+.lw .svc .body .trow .k { margin-bottom: 4px; }
+.lw .svc .body .trow .tv { font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+.lw .svc .body .trow.res .tv { color: var(--acc); font-weight: 600; }
 </style>
 
 <div class="lw" id="lw-root">
@@ -234,9 +241,9 @@
         <div>
           <span class="eyebrow">Для бьюти-юристов</span>
           <h1 class="h">Освобождаю <em>до 80%</em> времени от рутины</h1>
-          <p class="lead">Внедряю ИИ в практику бьюти-юристов и снимаю с вас рутинные задачи — заявки, переписки, документы, контент и трафик.</p>
+          <p class="lead">Снимаю с вас рутинные задачи — заявки, переписки, документы, контент и трафик.</p>
           <div class="btn-row">
-            <a href="#lead" class="btn btn-solid lw-scroll">Связаться со мной
+            <a href="#lead" class="btn btn-solid lw-scroll">Оставить заявку
               <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
@@ -255,8 +262,8 @@
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow">Наблюдение из практики</span>
-        <h2 class="h sec-title">Ваш день съедает не работа, а рутина</h2>
-        <p class="lead">Одни и те же задачи почти у каждого юриста. Нажмите на проблему — покажу, во что она обходится и каким инструментом решается.</p>
+        <h2 class="h sec-title">За время работы с экспертами и юристами я вижу одни и те же проблемы практически у всех</h2>
+        <p class="lead">Наведите на проблему — покажу, во что она обходится и каким инструментом решается.</p>
       </div>
       <div class="scn">
         <details open>
@@ -296,7 +303,7 @@
           <div class="lvl"><div class="k">Результат</div><div class="v">Работаете с удовольствием и без переработок.</div></div>
         </details>
       </div>
-      <p class="after-cards">Именно эти задачи я помогаю решить.</p>
+      <p class="after-cards">Именно с этим я и помогаю.</p>
       <div class="scrollhint">Листайте дальше
         <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
       </div>
@@ -307,61 +314,74 @@
   <section class="sec" id="services">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">Что я делаю</span>
-        <h2 class="h sec-title">Конкретные инструменты под вашу практику</h2>
-        <p class="lead">Подключаем по одному или вместе. Нажмите, чтобы раскрыть состав и результат.</p>
+        <span class="eyebrow">Инструменты</span>
+        <h2 class="h sec-title">Чем именно я решаю эти задачи</h2>
+        <p class="lead">Подключаем по одному или вместе. Нажмите на инструмент — раскрою, что делаю, как это работает и какой результат вы получаете.</p>
       </div>
-      <!-- A. Привлечение -->
-      <div class="svc-group">
-        <div class="svc-group-h"><h3>Привлечение клиентов</h3><span>приводим людей</span></div>
-        <div class="svc">
-          <details>
-            <summary><span class="num">1</span><h3>Сайт для юриста<small>Сайт начинает привлекать клиентов</small></h3></summary>
-            <div class="body"><div class="k">Что делаем</div><ul><li>Лендинг</li><li>Сайт услуг</li><li>Посадочные страницы</li></ul><div class="rr"><b>Результат:</b> сайт начинает привлекать клиентов.</div></div>
-          </details>
-          <details>
-            <summary><span class="num">2</span><h3>SEO<small>Клиенты приходят из поиска</small></h3></summary>
-            <div class="body"><div class="k">Что делаем</div><ul><li>Оптимизация</li><li>Структура</li><li>Статьи</li><li>Продвижение</li></ul><div class="rr"><b>Результат:</b> клиенты приходят из поиска.</div></div>
-          </details>
-          <details>
-            <summary><span class="num">3</span><h3>Яндекс.Директ<small>Стабильный поток заявок</small></h3></summary>
-            <div class="body"><div class="k">Что делаем</div><ul><li>Настройка рекламы</li><li>Аналитика</li><li>Тестирование</li></ul><div class="rr"><b>Результат:</b> стабильный поток заявок.</div></div>
-          </details>
-          <details>
-            <summary><span class="num">4</span><h3>Реклама ВКонтакте<small>Новые обращения</small></h3></summary>
-            <div class="body"><div class="k">Что делаем</div><ul><li>Таргет</li><li>Аудитории</li><li>Тесты объявлений</li></ul><div class="rr"><b>Результат:</b> новые обращения.</div></div>
-          </details>
-        </div>
-      </div>
-
-      <!-- B. Присутствие и доверие -->
-      <div class="svc-group">
-        <div class="svc-group-h"><h3>Присутствие и доверие</h3><span>чтобы вам доверяли</span></div>
-        <div class="svc">
-          <details>
-            <summary><span class="num">5</span><h3>Сообщество ВКонтакте<small>Профессиональный бренд</small></h3></summary>
-            <div class="body"><div class="k">Что делаем</div><ul><li>Оформление</li><li>Упаковка</li><li>Настройка</li></ul><div class="rr"><b>Результат:</b> профессиональное присутствие бренда.</div></div>
-          </details>
-          <details>
-            <summary><span class="num">6</span><h3>MAX<small>Дополнительный источник трафика</small></h3></summary>
-            <div class="body"><div class="k">Что делаем</div><ul><li>Запуск присутствия</li><li>Контент</li><li>Развитие аудитории</li></ul><div class="rr"><b>Результат:</b> дополнительный источник трафика.</div></div>
-          </details>
-        </div>
-      </div>
-
-      <!-- C. Контент и автоматизация -->
-      <div class="svc-group">
-        <div class="svc-group-h"><h3>Контент и автоматизация</h3><span>убираем рутину и удерживаем</span></div>
-        <div class="svc">
-          <details>
-            <summary><span class="num">7</span><h3>Telegram<small>Привлечение и удержание клиентов</small></h3></summary>
-            <div class="body"><div class="k">Что делаем</div><ul><li>Канал</li><li>Контент</li><li>Бот</li><li>Автоворонки</li></ul><div class="rr"><b>Результат:</b> система привлечения и удержания клиентов.</div></div>
-          </details>
-          <details>
-            <summary><span class="num">8</span><h3>Контент-завод<small>Контент без ежедневной рутины</small></h3></summary>
-            <div class="body"><div class="k">Что делаем</div><ul><li>Статьи</li><li>Посты</li><li>Контент-план</li><li>Генерация через ИИ</li></ul><div class="rr"><b>Результат:</b> регулярный экспертный контент без ежедневной рутины.</div></div>
-          </details>
-        </div>
+      <div class="svc">
+        <details>
+          <summary><span class="num">1</span><h3>Сайты<small>Площадка, которая приносит заявки</small></h3></summary>
+          <div class="body">
+            <div class="trow"><div class="k">Что делаем</div><div class="tv">Лендинги, сайты услуг, посадочные страницы.</div></div>
+            <div class="trow"><div class="k">Как это работает</div><div class="tv">Собираю структуру под услугу: тексты и блоки, которые ведут посетителя к заявке.</div></div>
+            <div class="trow"><div class="k">Какую проблему решает</div><div class="tv">Клиентов некуда вести, а текущий сайт не продаёт.</div></div>
+            <div class="trow res"><div class="k">Результат</div><div class="tv">Площадка, которая превращает трафик в заявки.</div></div>
+          </div>
+        </details>
+        <details>
+          <summary><span class="num">2</span><h3>SEO<small>Клиенты приходят из поиска</small></h3></summary>
+          <div class="body">
+            <div class="trow"><div class="k">Что делаем</div><div class="tv">Структура, статьи, оптимизация.</div></div>
+            <div class="trow"><div class="k">Как это работает</div><div class="tv">Привожу сайт в порядок под поисковые запросы и наполняю экспертными статьями.</div></div>
+            <div class="trow"><div class="k">Какую проблему решает</div><div class="tv">Клиенты ищут юриста в поиске — и находят конкурентов.</div></div>
+            <div class="trow res"><div class="k">Результат</div><div class="tv">Стабильный бесплатный поток обращений из поиска.</div></div>
+          </div>
+        </details>
+        <details>
+          <summary><span class="num">3</span><h3>Яндекс.Директ<small>Поток заявок «по кнопке»</small></h3></summary>
+          <div class="body">
+            <div class="trow"><div class="k">Что делаем</div><div class="tv">Настройка рекламы, аналитика, заявки.</div></div>
+            <div class="trow"><div class="k">Как это работает</div><div class="tv">Запускаю объявления на тёплую аудиторию и оптимизирую по стоимости заявки.</div></div>
+            <div class="trow"><div class="k">Какую проблему решает</div><div class="tv">Заявки нужны быстро, а органика растёт долго.</div></div>
+            <div class="trow res"><div class="k">Результат</div><div class="tv">Управляемый поток заявок, который можно усиливать.</div></div>
+          </div>
+        </details>
+        <details>
+          <summary><span class="num">4</span><h3>Telegram<small>Заявки и прогрев на автомате</small></h3></summary>
+          <div class="body">
+            <div class="trow"><div class="k">Что делаем</div><div class="tv">Канал, бот, автоворонки.</div></div>
+            <div class="trow"><div class="k">Как это работает</div><div class="tv">Веду канал, подключаю бота для приёма обращений и выстраиваю автоворонку прогрева.</div></div>
+            <div class="trow"><div class="k">Какую проблему решает</div><div class="tv">Переписки вручную, заявки теряются, аудитория не прогрета.</div></div>
+            <div class="trow res"><div class="k">Результат</div><div class="tv">Заявки собираются и ведутся автоматически, аудитория прогревается.</div></div>
+          </div>
+        </details>
+        <details>
+          <summary><span class="num">5</span><h3>ВКонтакте<small>Бренд и обращения из ВК</small></h3></summary>
+          <div class="body">
+            <div class="trow"><div class="k">Что делаем</div><div class="tv">Оформление сообщества, контент, таргетированная реклама.</div></div>
+            <div class="trow"><div class="k">Как это работает</div><div class="tv">Упаковываю сообщество, наполняю контентом и привожу аудиторию таргетом.</div></div>
+            <div class="trow"><div class="k">Какую проблему решает</div><div class="tv">Профиль выглядит слабо, аудитория до вас не доходит.</div></div>
+            <div class="trow res"><div class="k">Результат</div><div class="tv">Профессиональный бренд и новые обращения из ВКонтакте.</div></div>
+          </div>
+        </details>
+        <details>
+          <summary><span class="num">6</span><h3>MAX<small>Новый источник трафика</small></h3></summary>
+          <div class="body">
+            <div class="trow"><div class="k">Что делаем</div><div class="tv">Запуск и развитие присутствия.</div></div>
+            <div class="trow"><div class="k">Как это работает</div><div class="tv">Захожу на растущую площадку раньше конкурентов и выстраиваю аудиторию.</div></div>
+            <div class="trow"><div class="k">Какую проблему решает</div><div class="tv">Новый канал не освоен — вы упускаете трафик.</div></div>
+            <div class="trow res"><div class="k">Результат</div><div class="tv">Дополнительный источник клиентов.</div></div>
+          </div>
+        </details>
+        <details>
+          <summary><span class="num">7</span><h3>Контент-маркетинг<small>Контент без ежедневной рутины</small></h3></summary>
+          <div class="body">
+            <div class="trow"><div class="k">Что делаем</div><div class="tv">Контент-завод, автоматическая генерация контента, контент-план.</div></div>
+            <div class="trow"><div class="k">Как это работает</div><div class="tv">Формирую контент-план и выпускаю материалы пачками с помощью автоматизации.</div></div>
+            <div class="trow"><div class="k">Какую проблему решает</div><div class="tv">Нет времени на контент — мало входящих и низкая узнаваемость.</div></div>
+            <div class="trow res"><div class="k">Результат</div><div class="tv">Регулярный экспертный контент без ежедневной рутины.</div></div>
+          </div>
+        </details>
       </div>
     </div>
   </section>
@@ -412,12 +432,12 @@
     <div class="wrap">
       <div class="sec-head center">
         <span class="eyebrow">Следующий шаг</span>
-        <h2 class="h sec-title">Свяжитесь со мной</h2>
+        <h2 class="h sec-title">Оставьте заявку</h2>
         <p class="lead">Расскажите о своей практике — посмотрю процессы и подскажу, что можно убрать из ручной работы и чем усилить поток клиентов.</p>
       </div>
       <div class="form-wrap" id="lw-form-wrap">
         <div id="lw-form-body">
-          <h3>Написать мне</h3>
+          <h3>Оставить заявку</h3>
           <div class="sub">Отвечу в течение рабочего дня.</div>
           <form id="lw-form" novalidate>
             <div class="fields">
@@ -438,13 +458,13 @@
               <span>Согласен(на) на обработку персональных данных и связь по указанным контактам</span>
             </label>
             <div class="field-err" id="lw-consent-err" style="margin:-6px 0 10px;">Необходимо ваше согласие</div>
-            <button type="submit" class="submit">Связаться со мной
+            <button type="submit" class="submit">Оставить заявку
               <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           </form>
         </div>
         <div class="form-ok" id="lw-ok">
           <span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <h3 class="h">Сообщение отправлено</h3>
+          <h3 class="h">Заявка отправлена</h3>
           <p>Спасибо! Свяжусь с вами в течение рабочего дня.</p>
         </div>
       </div>
@@ -510,6 +530,16 @@
       window.scrollTo({ top: y < 0 ? 0 : y, behavior: 'smooth' });
     });
   });
+
+  /* сценарии: на десктопе раскрываем по наведению, на мобайле — по тапу */
+  if (window.matchMedia && window.matchMedia('(hover: hover)').matches) {
+    root.querySelectorAll('.scn details').forEach(function (d) {
+      d.addEventListener('mouseenter', function () { d.open = true; });
+      d.addEventListener('mouseleave', function () { d.open = false; });
+      var s = d.querySelector('summary');
+      if (s) s.addEventListener('click', function (e) { e.preventDefault(); });
+    });
+  }
 
   /* форма */
   var form = document.getElementById('lw-form');
