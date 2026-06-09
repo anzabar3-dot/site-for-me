@@ -1,0 +1,575 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+.lw, .lw * { box-sizing: border-box; margin: 0; padding: 0; }
+
+.lw {
+  --ink:   #0F0F0E;
+  --ink-2: #1C1C1A;
+  --bg:    #FFFFFF;
+  --band:  #F2F1ED;
+  --line:  #E4E2DC;
+  --mute:  #6E6C66;
+  --acc:   #0E7C66;
+  --acc-d: #0A5E4D;
+  --warn:  #C0492B;
+
+  width: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: clip;
+}
+
+.lw .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* headings */
+.lw .h { font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.05; color: var(--ink); text-wrap: balance; }
+.lw .h em { font-style: normal; color: var(--acc); }
+.lw .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--acc); margin-bottom: 18px; display: inline-block; }
+.lw .lead { font-size: 16.5px; color: var(--mute); line-height: 1.65; text-wrap: pretty; }
+
+/* buttons */
+.lw .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  border-radius: 7px; padding: 16px 26px; cursor: pointer; border: 1.5px solid var(--ink);
+  text-decoration: none; transition: transform .2s, background .2s, color .2s, box-shadow .25s;
+}
+.lw .btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.lw .btn-solid { background: var(--ink); color: #fff !important; }
+.lw .btn-solid:hover { background: var(--ink-2); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(15,15,14,.22); }
+.lw .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* sticky header */
+.lw .hd { position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.9); backdrop-filter: saturate(140%) blur(10px); -webkit-backdrop-filter: saturate(140%) blur(10px); }
+.lw .hd-in { max-width: 1180px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.lw .logo { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+.lw .logo sup { font-size: 9px; vertical-align: super; color: var(--mute); }
+.lw .nav { display: none; gap: 28px; }
+.lw .nav a { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink) !important; text-decoration: none; transition: color .2s; }
+.lw .nav a:hover { color: var(--acc) !important; }
+.lw .hd .btn { padding: 11px 20px; }
+
+/* photo placeholder */
+.lw .ph { position: relative; background:
+    repeating-linear-gradient(135deg, #ECEAE4 0 2px, transparent 2px 16px), linear-gradient(135deg, #E9E7E1, #F4F3EF);
+  border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; min-height: 320px; }
+.lw .ph .ph-in { display: flex; flex-direction: column; align-items: center; gap: 10px; color: #A9A69D; }
+.lw .ph svg { width: 46px; height: 46px; stroke: #B6B3AA; stroke-width: 1.4; fill: none; }
+.lw .ph span { font-size: 11.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+
+/* hero */
+.lw .hero { padding: 56px 0 64px; }
+.lw .hero-grid { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: center; }
+.lw .hero h1 { font-size: clamp(34px, 7.4vw, 60px); font-weight: 900; margin-bottom: 22px; }
+.lw .hero .lead { max-width: 500px; margin-bottom: 30px; font-size: 17px; }
+.lw .hero .ph { min-height: 380px; }
+
+/* section shell */
+.lw .sec { padding: 72px 0; }
+.lw .sec.band { background: var(--band); }
+.lw .sec-head { max-width: 820px; }
+.lw .sec-head.center { margin: 0 auto; text-align: center; }
+.lw .sec-title { font-size: clamp(26px, 4.2vw, 42px); }
+.lw .sec-head .lead { margin-top: 16px; }
+
+/* pains cards */
+.lw .cards { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 40px; }
+.lw .fcard { background: var(--band); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; transition: transform .25s, box-shadow .3s; }
+.lw .sec.band .fcard { background: var(--bg); }
+.lw .fcard:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(15,15,14,.09); }
+.lw .sq { width: 46px; height: 46px; border-radius: 12px; background: var(--band); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.lw .sec.band .sq { background: var(--bg); }
+.lw .sq svg { width: 21px; height: 21px; stroke: var(--ink); stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.lw .fcard h3 { font-family: 'Archivo', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 16px; margin-bottom: 8px; }
+.lw .fcard p { font-size: 14px; color: var(--mute); line-height: 1.55; }
+.lw .after-cards { margin-top: 30px; font-size: 17px; font-weight: 600; color: var(--ink); }
+
+/* scroll hint */
+.lw .scrollhint { text-align: center; margin-top: 26px; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); }
+.lw .scrollhint svg { display: block; margin: 12px auto 0; width: 22px; height: 22px; stroke: var(--acc); stroke-width: 2; fill: none; animation: lw-bounce 1.6s ease-in-out infinite; }
+@keyframes lw-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
+
+/* directions (раскрывающиеся большие блоки) */
+.lw .dirs { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 44px; }
+.lw .dir { background: var(--bg); border: 1px solid var(--line); border-radius: 18px; padding: 0 28px; transition: border-color .2s, box-shadow .25s; }
+.lw .dir[open] { border-color: var(--ink); box-shadow: 0 18px 48px rgba(15,15,14,.08); }
+.lw .dir summary { list-style: none; cursor: pointer; padding: 28px 0; display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; position: relative; padding-right: 42px; }
+.lw .dir summary::-webkit-details-marker { display: none; }
+.lw .dir .num { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 18px; color: #fff; background: var(--ink); width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.lw .dir .ti h3 { font-family: 'Archivo', sans-serif; font-weight: 800; text-transform: uppercase; font-size: clamp(18px, 2.4vw, 25px); line-height: 1.12; }
+.lw .dir .ti .stk { font-size: 12.5px; color: var(--acc); font-weight: 600; margin-top: 6px; }
+.lw .dir summary::after { content: '+'; position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 28px; font-weight: 400; color: var(--ink); }
+.lw .dir[open] summary::after { content: '–'; }
+.lw .dir .body { padding: 0 0 30px; }
+.lw .dir .intro { font-size: 15.5px; color: var(--mute); line-height: 1.6; margin-bottom: 20px; max-width: 760px; }
+.lw .dir .k { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acc); margin-bottom: 14px; }
+.lw .dir ul { list-style: none; display: grid; grid-template-columns: 1fr; gap: 11px; margin-bottom: 24px; }
+.lw .dir li { font-size: 14.5px; color: var(--ink-2); padding-left: 26px; position: relative; line-height: 1.45; }
+.lw .dir li::before { content: '✓'; position: absolute; left: 0; color: var(--acc); font-weight: 700; }
+.lw .dir .res { background: var(--band); border-radius: 12px; padding: 18px 20px; font-size: 15px; line-height: 1.55; color: var(--ink-2); }
+.lw .dir .res b { color: var(--acc); font-weight: 600; }
+@media (min-width: 640px) { .lw .dir ul { grid-template-columns: 1fr 1fr; gap: 11px 24px; } }
+
+/* cases (До → Что сделали → После) */
+.lw .case3 { display: grid; grid-template-columns: 1fr; margin-top: 40px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.lw .c3 { padding: 28px 26px; border-top: 1px solid var(--line); }
+.lw .c3:first-child { border-top: none; }
+.lw .c3.mid { background: var(--band); }
+.lw .sec.band .c3.mid { background: var(--bg); }
+.lw .c3 .lab { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px; display: inline-block; }
+.lw .c3.before .lab { color: var(--warn); }
+.lw .c3.mid .lab { color: var(--ink); }
+.lw .c3.after .lab { color: var(--acc); }
+.lw .c3 ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.lw .c3 li { font-size: 14px; line-height: 1.5; color: var(--ink-2); padding-left: 22px; position: relative; }
+.lw .c3 li::before { position: absolute; left: 0; font-weight: 700; }
+.lw .c3.before li { color: var(--mute); } .lw .c3.before li::before { content: '✕'; color: var(--warn); }
+.lw .c3.mid li::before { content: '→'; color: var(--ink); }
+.lw .c3.after li::before { content: '✓'; color: var(--acc); }
+.lw .case-note { font-size: 11px; color: #A8A59C; margin-top: 16px; }
+
+/* process flow */
+.lw .flow { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 44px; }
+.lw .fstep { display: grid; grid-template-columns: auto 1fr; gap: 20px; padding: 22px 0; border-top: 1px solid var(--line); align-items: flex-start; }
+.lw .fstep:last-child { border-bottom: 1px solid var(--line); }
+.lw .fn { width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; flex-shrink: 0; }
+.lw .fstep h3 { font-family: 'Archivo', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 16px; margin-bottom: 5px; }
+.lw .fstep p { font-size: 14px; color: var(--mute); line-height: 1.55; }
+@media (min-width: 980px) { .lw .flow { grid-template-columns: repeat(4, 1fr); gap: 24px; } .lw .fstep { grid-template-columns: 1fr; border: none; padding: 0; gap: 14px; } }
+
+/* form */
+.lw .form-wrap { max-width: 540px; margin: 40px auto 0; background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 30px 26px; box-shadow: 0 24px 60px rgba(15,15,14,.08); }
+.lw .form-wrap h3 { font-family: 'Archivo', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 19px; margin-bottom: 6px; text-align: left; }
+.lw .form-wrap .sub { font-size: 13.5px; color: var(--mute); margin-bottom: 20px; text-align: left; }
+.lw .fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px; }
+.lw .field input { width: 100%; background: var(--band); border: 1.5px solid var(--line); border-radius: 10px; padding: 14px 16px; font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink); outline: none; transition: border-color .2s, box-shadow .2s; -webkit-appearance: none; }
+.lw .field input::placeholder { color: #A8A59C; }
+.lw .field input:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(15,15,14,.08); background: var(--bg); }
+.lw .field.invalid input { border-color: var(--warn); box-shadow: 0 0 0 3px rgba(192,73,43,.1); }
+.lw .field-err { font-size: 11.5px; color: var(--warn); margin-top: 4px; display: none; font-weight: 500; text-align: left; }
+.lw .field.invalid .field-err { display: block; }
+.lw .submit { width: 100%; background: var(--ink); color: #fff; border: none; border-radius: 10px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background .2s, transform .2s; }
+.lw .submit:hover { background: var(--ink-2); transform: translateY(-2px); }
+.lw .submit svg { width: 15px; height: 15px; stroke: currentColor; stroke-width: 2; fill: none; }
+.lw .consent { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; cursor: pointer; text-align: left; }
+.lw .consent input { margin-top: 3px; width: 15px; height: 15px; flex-shrink: 0; accent-color: var(--ink); }
+.lw .consent span { font-size: 11.5px; color: var(--mute); line-height: 1.5; }
+.lw .form-ok { display: none; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 20px 0; }
+.lw .form-ok .ck { width: 52px; height: 52px; border-radius: 50%; background: var(--ink); display: flex; align-items: center; justify-content: center; }
+.lw .form-ok .ck svg { width: 24px; height: 24px; stroke: #fff; stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.lw .form-ok h3 { text-align: center; }
+.lw .form-ok p { font-size: 14px; color: var(--mute); max-width: 300px; }
+
+/* footer */
+.lw .ft { background: var(--ink); color: rgba(255,255,255,.65); padding: 56px 0 36px; }
+.lw .ft-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+.lw .ft .logo { color: #fff; display: inline-block; margin-bottom: 16px; }
+.lw .ft-c { font-size: 14px; line-height: 1.9; }
+.lw .ft-c a { color: rgba(255,255,255,.85) !important; text-decoration: none; }
+.lw .ft h4 { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; margin-bottom: 14px; }
+.lw .ft-links a { display: block; font-size: 14px; color: rgba(255,255,255,.65) !important; text-decoration: none; padding: 5px 0; }
+.lw .ft-links a:hover { color: #fff !important; }
+.lw .ft-bottom { border-top: 1px solid rgba(255,255,255,.14); margin-top: 36px; padding-top: 24px; font-size: 12.5px; color: rgba(255,255,255,.45); }
+
+/* ════ TABLET ≥ 720 ════ */
+@media (min-width: 720px) {
+  .lw .cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ════ DESKTOP ≥ 980 ════ */
+@media (min-width: 980px) {
+  .lw .nav { display: flex; }
+  .lw .hero { padding: 80px 0 90px; }
+  .lw .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 56px; }
+  .lw .sec { padding: 96px 0; }
+}
+</style>
+
+<div class="lw" id="lw-root">
+
+  <!-- HEADER (sticky) -->
+  <header class="hd">
+    <div class="hd-in">
+      <a href="#lw-top" class="logo lw-scroll">ВАШ БРЕНД<sup>™</sup></a>
+      <nav class="nav">
+        <a href="#problem" class="lw-scroll">Проблемы</a>
+        <a href="#services" class="lw-scroll">Услуги</a>
+        <a href="#cases" class="lw-scroll">Кейсы</a>
+        <a href="#how" class="lw-scroll">Как работаю</a>
+      </nav>
+      <a href="#lead" class="btn btn-solid lw-scroll">Связаться</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="lw-top">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Маркетинг для экспертов</span>
+          <h1 class="h">Освобождаю <em>до&nbsp;80%</em> времени от рутины</h1>
+          <p class="lead">Внедряю ИИ в практику экспертов и снимаю с вас рутинные задачи — заявки, переписки, документы, трафик, контент. Первые результаты — через 2 месяца.</p>
+          <div class="btn-row">
+            <a href="#lead" class="btn btn-solid lw-scroll">Связаться со мной
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <div class="ph">
+          <div class="ph-in">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <span>Фото — добавим позже</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРОБЛЕМЫ -->
+  <section class="sec band" id="problem">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Наблюдение из практики</span>
+        <h2 class="h sec-title">За время работы с экспертами я вижу одни и те же проблемы практически у всех</h2>
+      </div>
+      <div class="cards">
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 3v6h6"/><path d="M12 8v4l3 2"/></svg></div>
+          <h3>Зависимость от сарафана</h3>
+          <p>Клиенты приходят нестабильно, поток непредсказуем.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 11h5l2 3h2l2-3h5"/></svg></div>
+          <h3>Хаотичный поток заявок</h3>
+          <p>Обращения теряются между разными каналами.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 12h8M8 16h5"/></svg></div>
+          <h3>Слабая упаковка в соцсетях</h3>
+          <p>Профиль не отражает ваш реальный уровень и экспертизу.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg></div>
+          <h3>Нет времени на контент</h3>
+          <p>Публикации выходят редко, узнаваемость низкая.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+          <h3>Одни и те же вопросы клиентов</h3>
+          <p>Отвечаете на одно и то же вручную, по кругу.</p>
+        </div>
+        <div class="fcard">
+          <div class="sq"><svg viewBox="0 0 24 24"><path d="M21 12.8A8 8 0 1 1 11.2 3a6 6 0 0 0 9.8 9.8z"/></svg></div>
+          <h3>Выгорание от рутины</h3>
+          <p>Операционка съедает силы и время на развитие.</p>
+        </div>
+      </div>
+      <p class="after-cards">Именно с этим я и помогаю.</p>
+      <div class="scrollhint">Листайте дальше
+        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЧТО Я ДЕЛАЮ — 3 НАПРАВЛЕНИЯ -->
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Что я делаю</span>
+        <h2 class="h sec-title">Три направления под понятный результат</h2>
+        <p class="lead">Подключаем по одному или вместе. Нажмите на направление — раскрою состав и результат.</p>
+      </div>
+      <div class="dirs">
+
+        <details class="dir" open>
+          <summary>
+            <span class="num">1</span>
+            <div class="ti"><h3>Привлечение клиентов</h3><div class="stk">Сайты + Яндекс.Директ + SEO</div></div>
+          </summary>
+          <div class="body">
+            <p class="intro">Создаю систему привлечения клиентов для экспертов.</p>
+            <div class="k">Что входит</div>
+            <ul>
+              <li>Сайт, который превращает посетителей в заявки</li>
+              <li>Настройка Яндекс.Директ</li>
+              <li>SEO-продвижение в поиске</li>
+              <li>Аналитика заявок и рекламы</li>
+            </ul>
+            <div class="res"><b>Результат:</b> вы перестаёте зависеть только от сарафанного радио и получаете стабильный поток обращений из интернета.</div>
+          </div>
+        </details>
+
+        <details class="dir">
+          <summary>
+            <span class="num">2</span>
+            <div class="ti"><h3>Упаковка и развитие ВКонтакте</h3><div class="stk">Сообщества ВК + таргетированная реклама</div></div>
+          </summary>
+          <div class="body">
+            <p class="intro">Создаю профессиональное присутствие эксперта в социальных сетях.</p>
+            <div class="k">Что входит</div>
+            <ul>
+              <li>Создание и оформление сообщества ВКонтакте</li>
+              <li>Настройка меню, услуг и лид-форм</li>
+              <li>Контент-план</li>
+              <li>Таргетированная реклама</li>
+              <li>Ведение и развитие сообщества</li>
+            </ul>
+            <div class="res"><b>Результат:</b> потенциальные клиенты видят экспертный бренд и чаще оставляют заявки.</div>
+          </div>
+        </details>
+
+        <details class="dir">
+          <summary>
+            <span class="num">3</span>
+            <div class="ti"><h3>Автоматический контент-маркетинг</h3><div class="stk">Telegram + ВКонтакте + MAX</div></div>
+          </summary>
+          <div class="body">
+            <p class="intro">Настраиваю систему, которая помогает регулярно выпускать контент без ежедневной рутины.</p>
+            <div class="k">Что входит</div>
+            <ul>
+              <li>Контент для Telegram</li>
+              <li>Контент для ВКонтакте</li>
+              <li>Контент для MAX</li>
+              <li>Контент-планы</li>
+              <li>ИИ-инструменты для подготовки публикаций</li>
+              <li>Автоматизация контентных процессов</li>
+            </ul>
+            <div class="res"><b>Результат:</b> контент выходит регулярно, аудитория растёт, а вам не приходится тратить часы на каждый пост вручную.</div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- КЕЙСЫ -->
+  <section class="sec band" id="cases">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">Кейсы</span>
+        <h2 class="h sec-title">До → что сделали → после</h2>
+        <p class="lead">Реальные результаты в цифрах. Заполним по вашим кейсам после запуска.</p>
+      </div>
+      <div class="case3">
+        <div class="c3 before">
+          <span class="lab">Было</span>
+          <ul>
+            <li>Клиенты только из сарафана, поток нестабильный</li>
+            <li>Слабый профиль в соцсетях</li>
+            <li>Контент выходит редко</li>
+            <li>Заявок в месяц: — </li>
+          </ul>
+        </div>
+        <div class="c3 mid">
+          <span class="lab">Что сделали</span>
+          <ul>
+            <li>Собрали сайт, запустили Яндекс.Директ и SEO</li>
+            <li>Упаковали и прокачали сообщество ВК</li>
+            <li>Настроили систему регулярного контента</li>
+            <li>Подключили аналитику заявок</li>
+          </ul>
+        </div>
+        <div class="c3 after">
+          <span class="lab">Стало</span>
+          <ul>
+            <li>Стабильные заявки из интернета</li>
+            <li>Экспертный бренд и обращения из ВК</li>
+            <li>Контент выходит регулярно</li>
+            <li>Заявок в месяц: — </li>
+          </ul>
+        </div>
+      </div>
+      <div class="case-note">Цифры — плейсхолдеры. Добавим реальные показатели после первого кейса.</div>
+    </div>
+  </section>
+
+  <!-- КАК ПРОХОДИТ РАБОТА -->
+  <section class="sec" id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Как проходит работа</span>
+        <h2 class="h sec-title">Понятный процесс</h2>
+        <p class="lead">Вы видите результат на каждом этапе — без сложных терминов и техники с вашей стороны.</p>
+      </div>
+      <div class="flow">
+        <div class="fstep"><span class="fn">1</span><div><h3>Аудит</h3><p>Разбираю вашу нишу, текущие каналы и где теряются клиенты.</p></div></div>
+        <div class="fstep"><span class="fn">2</span><div><h3>Настройка</h3><p>Собираю выбранные направления под вашу практику.</p></div></div>
+        <div class="fstep"><span class="fn">3</span><div><h3>Запуск</h3><p>Включаем в работу: сайт, рекламу, соцсети и контент.</p></div></div>
+        <div class="fstep"><span class="fn">4</span><div><h3>Сопровождение</h3><p>Веду, анализирую и усиливаю то, что приносит заявки.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + ФОРМА -->
+  <section class="sec band" id="lead">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">Следующий шаг</span>
+        <h2 class="h sec-title">Свяжитесь со мной</h2>
+        <p class="lead">Расскажите о своей практике — посмотрю текущие каналы и подскажу, с какого направления начать, чтобы получить заявки.</p>
+      </div>
+      <div class="form-wrap" id="lw-form-wrap">
+        <div id="lw-form-body">
+          <h3>Связаться со мной</h3>
+          <div class="sub">Отвечу в течение рабочего дня.</div>
+          <form id="lw-form" novalidate>
+            <div class="fields">
+              <div class="field" data-n="name">
+                <input type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+                <div class="field-err">Введите имя (минимум 2 символа)</div>
+              </div>
+              <div class="field" data-n="contact">
+                <input type="text" name="contact" placeholder="Телефон" autocomplete="tel">
+                <div class="field-err">Укажите контакт (минимум 5 символов)</div>
+              </div>
+              <div class="field" data-n="niche">
+                <input type="text" name="niche" placeholder="Коротко о вашей нише (необязательно)">
+              </div>
+            </div>
+            <label class="consent" id="lw-consent-wrap">
+              <input type="checkbox" id="lw-consent">
+              <span>Согласен(на) на обработку персональных данных и связь по указанным контактам</span>
+            </label>
+            <div class="field-err" id="lw-consent-err" style="margin:-6px 0 10px;">Необходимо ваше согласие</div>
+            <button type="submit" class="submit">Связаться со мной
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </form>
+        </div>
+        <div class="form-ok" id="lw-ok">
+          <span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <h3 class="h">Сообщение отправлено</h3>
+          <p>Спасибо! Свяжусь с вами в течение рабочего дня.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="ft">
+    <div class="wrap">
+      <div class="ft-grid">
+        <div>
+          <a href="#lw-top" class="logo lw-scroll">ВАШ БРЕНД<sup>™</sup></a>
+          <div class="ft-c">Маркетинг и контент<br>для экспертов</div>
+        </div>
+        <div>
+          <h4>Навигация</h4>
+          <div class="ft-links">
+            <a href="#problem" class="lw-scroll">Проблемы</a>
+            <a href="#services" class="lw-scroll">Услуги</a>
+            <a href="#cases" class="lw-scroll">Кейсы</a>
+            <a href="#how" class="lw-scroll">Как работаю</a>
+            <a href="#lead" class="lw-scroll">Связаться</a>
+          </div>
+        </div>
+        <div>
+          <h4>Контакты</h4>
+          <div class="ft-c">
+            <a href="mailto:hello@example.com">hello@example.com</a><br>
+            Telegram: @username<br>
+            <span style="color:rgba(255,255,255,.45)">(заменить на ваши)</span>
+          </div>
+        </div>
+      </div>
+      <div class="ft-bottom">© <span id="lw-year">2025</span> · Все права защищены</div>
+    </div>
+  </footer>
+
+</div><!-- /lw-root -->
+
+<script>
+(function () {
+  /* ════════ НАСТРОЙКИ ════════ */
+  var EMAIL          = '';   // ← ваш email (mailto)
+  var TG_TOKEN       = '';   // ← токен Telegram-бота
+  var TG_CHAT_ID     = '';   // ← chat_id для заявок
+  var EMAIL_ENDPOINT = '';   // ← необяз.: URL формы-релея (Formspree)
+  /* Пока пусто — форма показывает «Сообщение отправлено» (демо). */
+  /* ═══════════════════════════ */
+
+  var root = document.getElementById('lw-root');
+  if (!root) return;
+  try { document.getElementById('lw-year').textContent = String(new Date().getFullYear()); } catch (e) {}
+
+  /* плавный скролл с учётом sticky-хедера */
+  var hd = root.querySelector('.hd');
+  root.querySelectorAll('.lw-scroll').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = (a.getAttribute('href') || '').replace('#', '');
+      var t = id && document.getElementById(id);
+      if (!t) return;
+      e.preventDefault();
+      var off = (hd ? hd.getBoundingClientRect().height : 0) + 8;
+      var y = t.getBoundingClientRect().top + window.pageYOffset - off;
+      window.scrollTo({ top: y < 0 ? 0 : y, behavior: 'smooth' });
+    });
+  });
+
+  /* форма */
+  var form = document.getElementById('lw-form');
+  if (!form) return;
+  function field(n) { return root.querySelector('.field[data-n="' + n + '"]'); }
+  function setErr(n, on) { var f = field(n); if (f) f.classList.toggle('invalid', !!on); }
+  ['name', 'contact'].forEach(function (n) {
+    var f = field(n); if (!f) return;
+    var i = f.querySelector('input');
+    if (i) i.addEventListener('input', function () { setErr(n, false); });
+  });
+  var consentErr = document.getElementById('lw-consent-err');
+  var cb = document.getElementById('lw-consent');
+  if (cb) cb.addEventListener('change', function () { if (consentErr) consentErr.style.display = 'none'; });
+
+  function showOk() {
+    var b = document.getElementById('lw-form-body');
+    var s = document.getElementById('lw-ok');
+    if (b) b.style.display = 'none';
+    if (s) s.style.display = 'flex';
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name    = form.elements['name']    ? form.elements['name'].value.trim()    : '';
+    var contact = form.elements['contact'] ? form.elements['contact'].value.trim() : '';
+    var niche   = form.elements['niche']   ? form.elements['niche'].value.trim()   : '';
+
+    var ok = true;
+    if (name.length < 2)    { setErr('name', true); ok = false; }
+    if (contact.length < 5) { setErr('contact', true); ok = false; }
+    if (cb && !cb.checked)  { if (consentErr) consentErr.style.display = 'block'; ok = false; }
+    if (!ok) return;
+
+    var text = 'Имя: ' + name + '\nКонтакт: ' + contact + (niche ? '\nНиша: ' + niche : '');
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; }
+
+    var jobs = [];
+    if (TG_TOKEN && TG_CHAT_ID) {
+      jobs.push(fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: '📩 Новое сообщение с сайта\n\n' + text })
+      }));
+    }
+    if (EMAIL_ENDPOINT) {
+      jobs.push(fetch(EMAIL_ENDPOINT, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email: EMAIL, name: name, contact: contact, niche: niche, message: text })
+      }));
+    }
+    if (!jobs.length && EMAIL) {
+      window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Сообщение с сайта') + '&body=' + encodeURIComponent(text);
+    }
+    if (jobs.length) {
+      Promise.all(jobs.map(function (p) { return p.catch(function () {}); })).then(showOk);
+    } else {
+      showOk();
+    }
+  });
+})();
+</script>
